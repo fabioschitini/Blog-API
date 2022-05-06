@@ -7,6 +7,7 @@ const flash = require('express-flash')
 const passport = require("passport");
 const session = require("express-session");
 const cors=require("cors")
+require('dotenv').config();
 
 const Users=require('./models/users')
 
@@ -16,7 +17,7 @@ var usersRouter = require('./routes/users');
 var app = express();
 
 var mongoose = require('mongoose');
-const dev_db_url='mongodb+srv://schitini:Fabiolindo1@node-projects.zykqj.mongodb.net/Blog-API?retryWrites=true&w=majority'
+const dev_db_url=process.env.mongoDb
 var mongoDB =  dev_db_url;
 mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.Promise = global.Promise;
