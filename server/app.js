@@ -8,7 +8,7 @@ const passport = require("passport");
 const session = require("express-session");
 const cors=require("cors")
 require('dotenv').config();
-
+app.enable('trust proxy')
 const Users=require('./models/users')
 
 var indexRouter = require('./routes/index');
