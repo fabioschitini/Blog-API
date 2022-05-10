@@ -71,7 +71,7 @@ jwt.verify(token,ACESS_TOKEN_SECRET,(err,user)=>{
     console.log('loggign out i think')
   });
 
-  router.get("/post",authenticateToken,postController.post_create_get);
+  router.get("/post",postController.post_create_get);
   router.post("/post",authenticateToken,postController.post_create_post);
   router.get("/comments",authenticateToken,commentsController.comments_create_get);
   router.post("/comments",authenticateToken,commentsController.comments_create_post);
