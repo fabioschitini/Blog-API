@@ -26,7 +26,7 @@ router.post(
                 console.log("passwords match! log user in")
                //return res.send("Password match, log in")  
                let expire=3600  
-               const accessToken=jwt.sign({user},"secretKey",{expiresIn:`${expire}s`})
+               const accessToken=jwt.sign({user},process.env.ACESS_TOKEN_SECRET,{expiresIn:`${expire}s`})
                console.log(accessToken)
                 req.session.jwt=accessToken
            res.json({user:'user'})
@@ -49,7 +49,7 @@ router.post(
     console.log(req.session,'sessioonnnnnnnnnnnnnnn')
 token=req.session.jwt
 if(!token) {return res.json({user:undefined})}
-jwt.verify(token,"secretKey",(err,user)=>{
+jwt.verify(token,ACESS_TOKEN_SECRET,(err,user)=>{
     if(err) return res.json({user:undefined})
     req.user=user
     next()
