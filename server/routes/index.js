@@ -18,7 +18,7 @@ require('dotenv').config()
 
 
 
-router.get('/login',authenticateToken,userController.log_in_get);
+router.get('/login',yolo,authenticateToken,userController.log_in_get);
 router.post(
     "/login",(req,res)=>{
       Users.findOne({ username: req.body.username }, (err, user) => {
@@ -40,6 +40,7 @@ router.post(
                   maxAge:expire*1000,
                   httpOnly:true
                 })
+                res.header('auth','fuck youuu')
            res.json({user:'user'})
               } else {
                 // passwords do not match!
@@ -55,6 +56,13 @@ router.post(
 
     }
   );
+
+  function yolo(req, res, next){
+      res.append('Access-Control-Allow-Origin', ['*']);
+      res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+      res.append('Access-Control-Allow-Headers', 'Content-Type');
+      next();
+  }
 
   function authenticateToken(req,res,next){
     let token;
@@ -82,11 +90,11 @@ jwt.verify(token,"secretKey",(err,user)=>{
 
 }
 
-  router.get('/',(req,res)=>{
+  router.get('/',yolo,(req,res)=>{
     res.json({Welcome:"Welcome to my API"})
   });
 
-  router.get('/logout', function (req, res){
+  router.get('/logout',yolo, function (req, res){
     // req.session.destroy(function (err) {
     //   res.redirect('/post'); //Inside a callback… bulletproof!
     // });
@@ -96,17 +104,17 @@ jwt.verify(token,"secretKey",(err,user)=>{
     console.log('loggign out i think')
   });
 
-  router.get("/post",authenticateToken,postController.post_create_get);
-  router.post("/post",authenticateToken,postController.post_create_post);
-  router.get("/comments",authenticateToken,commentsController.comments_create_get);
-  router.post("/comments",authenticateToken,commentsController.comments_create_post);
-  router.post("/comments/delete",authenticateToken,commentsController.comments_delete_post);
-  router.post("/post/delete",authenticateToken,postController.post_delete_post);
-  router.get("/post/:id",authenticateToken,postController.post_details_get);
-  router.get("/post/update/:id",authenticateToken,postController.post_update_get);  
-  router.post("/post/update/:id",authenticateToken,postController.post_update_post);
-  router.get("/comments/:id",authenticateToken,commentsController.comments_update_get);
-  router.post("/comments/:id",authenticateToken,commentsController.comments_update_post);
+  router.get("/post",yolo,authenticateToken,postController.post_create_get);
+  router.post("/post",yolo,authenticateToken,postController.post_create_post);
+  router.get("/comments",yolo,authenticateToken,commentsController.comments_create_get);
+  router.post("/comments",yolo,authenticateToken,commentsController.comments_create_post);
+  router.post("/comments/delete",yolo,authenticateToken,commentsController.comments_delete_post);
+  router.post("/post/delete",yolo,authenticateToken,postController.post_delete_post);
+  router.get("/post/:id",yolo,authenticateToken,postController.post_details_get);
+  router.get("/post/update/:id",yolo,authenticateToken,postController.post_update_get);  
+  router.post("/post/update/:id",yolo,authenticateToken,postController.post_update_post);
+  router.get("/comments/:id",yolo,authenticateToken,commentsController.comments_update_get);
+  router.post("/comments/:id",yolo,authenticateToken,commentsController.comments_update_post);
 
   function checkAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
