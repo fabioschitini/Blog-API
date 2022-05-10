@@ -58,6 +58,7 @@ router.post(
 
   function authenticateToken(req,res,next){
     let token;
+    console.log(req.headers,'headerssssssssssssssssssssssss')
     console.log('bearerrrrrrrrrrrrrrr of the curse', req.headers['cookie'].split('jwt=')[1])
     //const authHeader=req.headers['cookie'].split('=')[1]
     if(!req.headers['cookie'].includes('jwt=')){
