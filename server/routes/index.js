@@ -94,7 +94,7 @@ jwt.verify(token,"secretKey",(err,user)=>{
     // req.session.destroy(function (err) {
     //   res.redirect('/post'); //Inside a callback… bulletproof!
     // });
-  
+  req.session.jwt=''
     res.cookie("jwt",'',{maxAge:1})
     res.json({user:undefined})
     console.log('loggign out i think')
