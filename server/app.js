@@ -31,7 +31,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-app.use(cors({credentials: true, origin: ['http://localhost:3000','http://localhost:5000']
+app.use(cors({credentials: true, origin: ['http://localhost:3000','http://localhost:5001']
 }))
 
 //Users.findOne({ username: "fabioschitini1@hotmail.com" }).then(user=>console.log(user))
@@ -40,7 +40,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
+app.use(session({
+  secret: 'street',
+  resave: true,
+  saveUninitialized: true,
+  proxy: true,
+  cookie: {
+      sameSite:'none',
+      secure:true
+  },
+  store: new MongoStore({ mongooseConnection: mongoose.connection },)
+}));
 
 //initializePassport(passport,Users)
 
