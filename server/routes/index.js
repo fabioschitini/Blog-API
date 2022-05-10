@@ -81,7 +81,7 @@ jwt.verify(token,"secretKey",(err,user)=>{
 
 }
 
-  router.get('/',authenticateToken,(req,res)=>{
+  router.get('/',(req,res)=>{
     res.json({Welcome:"Welcome to my API"})
   });
 
