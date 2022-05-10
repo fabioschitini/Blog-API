@@ -33,7 +33,7 @@ router.post(
                 // passwords match! log user in
                 console.log("passwords match! log user in")
                //return res.send("Password match, log in")  
-               let expire=3600  
+               let expire=5  
                const accessToken=jwt.sign({user},"secretKey",{expiresIn:`${expire}s`})
                console.log(accessToken)
                 res.cookie('jwt',accessToken,{
