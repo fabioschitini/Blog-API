@@ -15,7 +15,7 @@
   },
   "homepage": "http://fabioschitini.github.io/Blog-Api",
   "scripts": {
-    "start": "set PORT=5001 && react-scripts start",
+    "start": "set PORT=5002 && react-scripts start",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "build": "react-scripts build",
