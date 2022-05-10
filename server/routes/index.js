@@ -9,15 +9,7 @@ var Users= require('../models/users');
 const bcrypt=require("bcryptjs")
 const jwt=require('jsonwebtoken')
 require('dotenv').config()
-
-
-
-
 /* GET home page. */
-
-
-
-
 router.get('/login',authenticateToken,userController.log_in_get);
 router.post(
     "/login",(req,res)=>{
@@ -33,13 +25,9 @@ router.post(
                 // passwords match! log user in
                 console.log("passwords match! log user in")
                //return res.send("Password match, log in")  
-               let expire=5  
+               let expire=3600  
                const accessToken=jwt.sign({user},"secretKey",{expiresIn:`${expire}s`})
                console.log(accessToken)
-                res.cookie('jwt',accessToken,{
-                  maxAge:expire*1000,
-                  httpOnly:true
-                })
                 req.session.jwt=accessToken
            res.json({user:'user'})
               } else {
@@ -53,28 +41,12 @@ router.post(
           return res.json("Error");
         }
       });
-
     }
   );
-
- 
 
   function authenticateToken(req,res,next){
     let token;
     console.log(req.session,'sessioonnnnnnnnnnnnnnn')
-    //console.log('bearerrrrrrrrrrrrrrr of the curse', req.headers['cookie'].split('jwt=')[1])
-    //const authHeader=req.headers['cookie'].split('=')[1]
-//     if(!req.headers['cookie'].includes('jwt=')){
-//       return res.json({user:undefined})
-//     }
-//  else if(req.headers['cookie'].split('jwt=')[1].includes(';')){
-//    console.log('includes fuckin ;;;;;;;;;')
-//    token=req.headers['cookie'].split('=')[1].split(';')[0]
-// }
-//  else if(!req.headers['cookie'].split('jwt=')[1].includes(';')){
-//   console.log('doesnt includes fuckin ;;;;;;;;;',req.headers['cookie'].split('jwt=')[1])
-//    token=req.headers['cookie'].split('jwt=')[1]
-// }
 token=req.session.jwt
 if(!token) {return res.json({user:undefined})}
 jwt.verify(token,"secretKey",(err,user)=>{
@@ -82,8 +54,6 @@ jwt.verify(token,"secretKey",(err,user)=>{
     req.user=user
     next()
 })
-
-
 }
 
   router.get('/',(req,res)=>{
@@ -111,30 +81,6 @@ jwt.verify(token,"secretKey",(err,user)=>{
   router.post("/post/update/:id",authenticateToken,postController.post_update_post);
   router.get("/comments/:id",authenticateToken,commentsController.comments_update_get);
   router.post("/comments/:id",authenticateToken,commentsController.comments_update_post);
-
-  function checkAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) {
-      return next()
-    }
-  
-    res.redirect('/login')
-  }
-  
-  function checkNotAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) {
-      return res.redirect('/')
-    }
-    next()
-  }
-
-  function checkAdminAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) {
-     if(req.user.status==="admin"){
-        return res.redirect('/')
-     }
-    }
-    next()
-  }
 
 
 module.exports = router;
