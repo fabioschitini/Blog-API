@@ -62,19 +62,20 @@ router.post(
   function authenticateToken(req,res,next){
     let token;
     console.log(req.session,'sessioonnnnnnnnnnnnnnn')
-    console.log('bearerrrrrrrrrrrrrrr of the curse', req.headers['cookie'].split('jwt=')[1])
+    //console.log('bearerrrrrrrrrrrrrrr of the curse', req.headers['cookie'].split('jwt=')[1])
     //const authHeader=req.headers['cookie'].split('=')[1]
-    if(!req.headers['cookie'].includes('jwt=')){
-      return res.json({user:undefined})
-    }
- else if(req.headers['cookie'].split('jwt=')[1].includes(';')){
-   console.log('includes fuckin ;;;;;;;;;')
-   token=req.headers['cookie'].split('=')[1].split(';')[0]
-}
- else if(!req.headers['cookie'].split('jwt=')[1].includes(';')){
-  console.log('doesnt includes fuckin ;;;;;;;;;',req.headers['cookie'].split('jwt=')[1])
-   token=req.headers['cookie'].split('jwt=')[1]
-}
+//     if(!req.headers['cookie'].includes('jwt=')){
+//       return res.json({user:undefined})
+//     }
+//  else if(req.headers['cookie'].split('jwt=')[1].includes(';')){
+//    console.log('includes fuckin ;;;;;;;;;')
+//    token=req.headers['cookie'].split('=')[1].split(';')[0]
+// }
+//  else if(!req.headers['cookie'].split('jwt=')[1].includes(';')){
+//   console.log('doesnt includes fuckin ;;;;;;;;;',req.headers['cookie'].split('jwt=')[1])
+//    token=req.headers['cookie'].split('jwt=')[1]
+// }
+token=req.session.jwt
 if(!token) {return res.json({user:undefined})}
 jwt.verify(token,"secretKey",(err,user)=>{
     if(err) return res.json({user:undefined})
