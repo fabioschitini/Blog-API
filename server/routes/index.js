@@ -13,6 +13,7 @@ require('dotenv').config()
 router.get('/login',authenticateToken,userController.log_in_get);
 router.post(
     "/login",(req,res)=>{
+      console.log(req.body.username,'usernameeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee')
       Users.findOne({ username: req.body.username }, (err, user) => {
         try{
           if (!user) {
