@@ -7,6 +7,7 @@ const flash = require('express-flash')
 const passport = require("passport");
 const session = require("express-session");
 const cors=require("cors")
+const initializePassport = require('./passport-config')
 require('dotenv').config();
 
 const Users=require('./models/users')
@@ -19,7 +20,7 @@ var app = express();
 app.enable('trust proxy')
 
 var mongoose = require('mongoose');
-const dev_db_url='mongodb+srv://schitini:Fabiolindo1@node-projects.zykqj.mongodb.net/Blog-API?retryWrites=true&w=majority'
+const dev_db_url=process.env.mongoDB
 var mongoDB =  dev_db_url;
 mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.Promise = global.Promise;
@@ -41,8 +42,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
 
-const initializePassport = require('./passport-config')
-initializePassport(passport,Users)
+//initializePassport(passport,Users)
 
 app.use(passport.initialize());
 app.use(passport.session());
