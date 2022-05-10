@@ -49,7 +49,6 @@ app.use(session({
       sameSite:'none',
       secure:true
   },
-  store: new MongoStore({ mongooseConnection: mongoose.connection },)
 }));
 
 //initializePassport(passport,Users)
