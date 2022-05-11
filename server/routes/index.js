@@ -69,19 +69,19 @@ jwt.verify(token,'secreteKey',(err,user)=>{
     res.cookie("jwt",'',{maxAge:1})
     res.json({user:undefined})
     console.log('loggign out i think')
-  });
+  }); 
 
   router.get("/post",postController.post_create_get);
   router.post("/post",authenticateToken,postController.post_create_post);
-  router.get("/comments",authenticateToken,commentsController.comments_create_get);
-  router.post("/comments",authenticateToken,commentsController.comments_create_post);
+  router.get("/comments",commentsController.comments_create_get);
+  router.post("/comments",commentsController.comments_create_post);
   router.post("/comments/delete",authenticateToken,commentsController.comments_delete_post);
   router.post("/post/delete",authenticateToken,postController.post_delete_post);
-  router.get("/post/:id",authenticateToken,postController.post_details_get);
+  router.get("/post/:id",postController.post_details_get);
   router.get("/post/update/:id",authenticateToken,postController.post_update_get);  
   router.post("/post/update/:id",authenticateToken,postController.post_update_post);
-  router.get("/comments/:id",authenticateToken,commentsController.comments_update_get);
-  router.post("/comments/:id",authenticateToken,commentsController.comments_update_post);
+  router.get("/comments/:id",commentsController.comments_update_get);
+  router.post("/comments/:id",commentsController.comments_update_post);
 
 
 module.exports = router;
