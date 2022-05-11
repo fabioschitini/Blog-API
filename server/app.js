@@ -31,8 +31,12 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-app.use(cors({credentials: true, origin: ['http://localhost:3000','http://localhost:5001','http://fabioschitini.github.io/Blog-API']
-}))
+app.use(cors({credentials: true, origin: '*',
+methods: ["GET", "POST"],
+allowedHeaders: ["my-custom-header"],
+}
+
+))
 
 //Users.findOne({ username: "fabioschitini1@hotmail.com" }).then(user=>console.log(user))
 app.use(logger('dev'));
