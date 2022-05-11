@@ -4,8 +4,7 @@ import {useParams } from 'react-router-dom'
 import Axios from 'axios'
 
 const instance = Axios.create({
-    baseURL: 'https://blooming-peak-71078.herokuapp.com',
-    withCredentials: true
+    baseURL: 'https://blooming-peak-71078.herokuapp.com'
   });
 
 const PostEdit = (props) => {

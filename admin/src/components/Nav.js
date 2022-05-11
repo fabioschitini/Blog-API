@@ -10,7 +10,7 @@ console.log("uSerrrr",props.user)
 
     function logOut(){
         console.log("yeppepee")
-        Axios.get("https://blooming-peak-71078.herokuapp.com"+"/logout",{withCredentials: true})
+        Axios.get("https://blooming-peak-71078.herokuapp.com"+"/logout")
         .then(function (response) {
           console.log('response.data.userrrrrrrrrrrrrrrrrrr')
           props.setUserData(response.data.user)
