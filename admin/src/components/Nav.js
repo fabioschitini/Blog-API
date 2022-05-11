@@ -2,7 +2,11 @@ import {Link} from 'react-router-dom'
 import Axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 
-
+const instance = Axios.create({
+    baseURL: 'https://blooming-peak-71078.herokuapp.com',
+    withCredentials:true
+  
+  });
 
 const Nav = (props) => {
     const navigate=useNavigate()
@@ -10,7 +14,7 @@ console.log("uSerrrr",props.user)
 
     function logOut(){
         console.log("yeppepee")
-        Axios.get("https://blooming-peak-71078.herokuapp.com"+"/logout")
+        instance.get("/logout")
         .then(function (response) {
           console.log('response.data.userrrrrrrrrrrrrrrrrrr')
           props.setUserData(response.data.user)

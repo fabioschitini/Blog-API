@@ -12,6 +12,7 @@ import PostCreate from './components/PostCreate'
 import Axios from 'axios'
 const instance = Axios.create({
   baseURL: 'https://blooming-peak-71078.herokuapp.com',
+  withCredentials:true
 
 });
 

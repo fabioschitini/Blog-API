@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 import Axios from 'axios'
 
 const instance = Axios.create({
-    baseURL: 'https://blooming-peak-71078.herokuapp.com'
+    baseURL: 'https://blooming-peak-71078.herokuapp.com',
+    withCredentials:true
   });
 
 const PostCreate = (props) => {
