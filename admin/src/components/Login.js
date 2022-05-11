@@ -9,8 +9,7 @@ import { useNavigate } from "react-router-dom";
   //})
 
   const instance = Axios.create({
-    baseURL: 'https://blooming-peak-71078.herokuapp.com',
-    withCredentials: true
+    baseURL: 'https://blooming-peak-71078.herokuapp.com'
   });
 
 const Login = (props) => {
