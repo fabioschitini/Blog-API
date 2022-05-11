@@ -13,7 +13,7 @@
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
-  "homepage": "http://fabioschitini.github.io/Blog-Api",
+  "homepage": "http://fabioschitini.github.io/Blog-API",
   "scripts": {
     "start": "set PORT=5001 && react-scripts start",
     "predeploy": "npm run build",
