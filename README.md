@@ -3,7 +3,7 @@
 
 
 
-A free form projectwhere I created the backend of my blog, also with the page for my admin-client page,where, as long as I am autheticaded
+A free form project where I created the backend of my blog, also with the page for my admin-client page,where, as long as I am autheticaded
 I can Publish new Post,Create New Post, delete and edit these post
 and also delete comments.
 ## Feature
