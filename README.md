@@ -11,8 +11,7 @@ and also delete comments.
 
 
 
-link Live preview:https://fabioschitini.github.io/Blog-Api-ClientSide/
-
+link Live preview:https://fabioschitini.github.io/Blog-API/
 
 # Built with
 
