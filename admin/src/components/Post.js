@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import {Link} from 'react-router-dom'
 import {useParams } from 'react-router-dom'
 import Axios from 'axios'
+import { Form,Button,Accordion} from 'react-bootstrap';
 
 const instance = Axios.create({
     baseURL: 'https://blooming-peak-71078.herokuapp.com',
@@ -13,9 +14,10 @@ const Post = (props) => {
     const navigate = useNavigate();
 
     const { id } = useParams()  
+
     const [postDetails,setPostDetails]=useState([{}])
     const [comment,setComment]=useState([{}])
-    const [addComment,setAddComment]=useState(false)
+   
     const [name,setName]=useState('')
     const [content,setContent]=useState('')
     const [commentCounter,setCommentCounter]=useState(2)
@@ -24,11 +26,11 @@ const Post = (props) => {
         setCommentCounter(commentCounter+1)
     }
 
-    if(id){
-        console.log("id existtttttttttttttttttttttttttttttttttttttt")
-    }
 
     function deletePost(e){
+        if(!props.user){
+            return
+        }
         console.log("Deleting Post")
         instance.post("/post/delete",{postId:e.target.id,comment}).then(result=>{
             props.setBackendDataPost(result.data.post)
@@ -37,28 +39,31 @@ const Post = (props) => {
         })
     }
 
-    function unpublishPost(){
-        instance.post(`/post/update/${id}`,{title:postDetails.title,content:postDetails.content,status:false}).then(result=>{
-            instance.get(`/post/${id}`).then(response=>{ console.log(response.data.post[0])
-                setPostDetails(response.data.post)}
-                )
-                navigate("/")
-            })
-        }
+  //  function unpublishPost(){
+    //    instance.post(`/post/update/${id}`,{title:postDetails.title,content:postDetails.content,status:false}).then(result=>{
+      //      instance.get(`/post/${id}`).then(response=>{ console.log(response.data.post[0])
+          //      setPostDetails(response.data.post)}
+          //      )
+           //     navigate("/")
+          //  })
+       // }
     
 
-    function publishPost(){
-        instance.post(`/post/update/${id}`,{title:postDetails.title,content:postDetails.content,status:true}).then(result=>{
-            instance.get(`/post/${id}`).then(response=>{ console.log(response.data.post[0])
-                setPostDetails(response.data.post)
+  //  function publishPost(){
+    //    instance.post(`/post/update/${id}`,{title:postDetails.title,content:postDetails.content,status:true}).then(result=>{
+      //      instance.get(`/post/${id}`).then(response=>{ console.log(response.data.post[0])
+        //        setPostDetails(response.data.post)
             
-            })
+         //   })
                 
-                navigate("/")
-            })
-        }
+         //       navigate("/")
+        //    })
+       // }
 
         function deleteComment(e){
+            if(!props.user){
+                return
+            }
             console.log("deleting")
             instance.post("/comments/delete",{commentId:e.target.id}).then(result=>{
                 console.log("deleted with sucess")
@@ -76,7 +81,7 @@ const Post = (props) => {
         e.preventDefault()
         console.log("Submiting")
         instance.post("/comments",{name,content,postId:id}).then(result=>{
-        setAddComment(false)
+       
         instance.get(`/comments`).then(data=>{          
             setComment(data.data.comments.filter(comment=>comment.post[0]===id))})
         console.log("Sucess")
@@ -93,8 +98,46 @@ useEffect(()=>{
         instance.get(`/comments`).then(data=>{          
             setComment(data.data.comments.filter(comment=>comment.post[0]===id))})
       },[])
-    return (
+      return (
         <div>
+            <div class="row g-5" style={{margin:"0"}}>
+            <article class="blog-post">
+        <h2 class="blog-post-title mb-1">Title</h2>
+        <p class="blog-post-meta">date  by <a href="#">Fabio</a></p>
+
+        <p>Summary.</p>
+        <hr/>
+
+        
+        <h2>Feature</h2>       
+        <p>Features.</p>
+        <hr/>
+        <h3>Built With</h3>
+        <p>This is some additional paragraph placeholder content. It's a slightly shorter version of the other highly repetitive body text used throughout. This is an example unordered list:</p>
+        <ul>
+          
+          <li>Array With all tech and tolls list</li>
+          <li>Second list item with a longer description</li>
+          <li>Third list item to close it out</li>
+        </ul>
+        <hr/>
+  
+        <h2>Outcome</h2>
+        <p>outcome.</p>
+        <hr/>
+        <h3>What I learned</h3>
+        <p>  What I Learned This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p>
+        <hr/>
+{props.user?<Button style={{marginRight:"20px"}}  onClick={deletePost}>Delete</Button>   :null}
+{props.user?   <Link className="btn btn-primary" to={{
+                pathname:`/post/update/${id}`
+            }}>Edit</Link>  :null}
+      </article>
+
+
+
+
+
         {postDetails.content?
         <div> 
             <div> 
@@ -106,52 +149,61 @@ useEffect(()=>{
              <p className='post-content'>{postDetails.content} </p>
              <p>{postDetails.date}</p>
              </div>
+             </div>
 
-             <div className='post-links'> 
-             <button className='post-btn' id={postDetails._id} onClick={deletePost}>Delete</button>
-            <Link className='post-btn' to={{
-                pathname:`/post/update/${id}`
-            }}>Edit</Link>
-            {postDetails.published?<button className='post-btn' onClick={unpublishPost}>Unplublish</button>:<button className='post-btn' onClick={ publishPost}>Publish</button>}
-             </div>
-             </div>
-             <p className='add-comment' onClick={()=>setAddComment(true)}>Add comment</p>
+
+           
              <p className='add-comment' onClick={moreComments}>See more comments+</p>
-            {addComment? <div>
-                 <form className='speaker-form' onSubmit={onSubmit}>
-<div className='form-row'>
-        <label forhtml='name'>Name</label>
-        <input id='name'  required value={name} type='text' onChange={(e) => setName(e.target.value)}/>
-      </div>
-      <div className='form-row'>
-        <label forhtml='content'>Content</label>
-        <input id='content'  required value={content} type='text' onChange={(e) => setContent(e.target.value)}/>
-      </div>
-<div className='form-row'>
-        <button>Submit</button>
-      </div>
-</form>  
- </div>:null}
-             <div> 
-            
-                    </div>
-       {comment.slice(0,commentCounter).map(comment=>{
-           return (<div key={comment._id}>
-            <header className='comment-header'>
-            <h4>{comment.name}</h4>
-                </header>
-                <div className='comment-content-div'> 
-                <p className='post-content'>{comment.content}</p>         
-                <p>{comment.date}</p>
-             </div>
-             <div className='post-links'> 
-             <button className='post-btn' id={comment._id} onClick={ deleteComment}>Delete</button>
+          
+              <Accordion defaultActiveKey="0">
+  <Accordion.Item eventKey="0">
+    <Accordion.Header>Add Comment</Accordion.Header>
+    <Accordion.Body>
 
-             </div>
+    <Form onSubmit={onSubmit}>
+
+<Form.Group className="mb-3" controlId="formBasicEmail">
+  <Form.Label>Name</Form.Label>
+  <Form.Control style={{maxWidth:"400px"}} value={name} onChange={(e) => setName(e.target.value)} type="text" placeholder="Enter your name" />
+</Form.Group>
+
+<Form.Group className="mb-3" controlId="formBasicPassword">
+  <Form.Label>Content</Form.Label>
+  <Form.Control rows={3} style={{maxWidth:"600px"}}  as="textarea" value={content} onChange={(e) => setContent(e.target.value)} type="text" placeholder="Content..." />
+</Form.Group>
+
+<Button variant="primary" type="submit">
+  Submit
+</Button>
+</Form>
+    </Accordion.Body>
+  </Accordion.Item>
+</Accordion>
+
+<hr/>
+       {comment.slice(0,commentCounter).map((comment,element,array)=>{
+           return (<div key={comment._id}>
+           <div class="col-md-6">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-primary">{comment.name}</strong>
+          <h3 class="mb-0">{comment.title}</h3>
+          <div class="mb-1 text-muted">{comment.date}</div>
+          <p class="card-text mb-auto">{comment.content}</p>
+          {props.user?<Button style={{marginRight:"20px",width:"20%"}}  onClick={deleteComment}>Delete</Button>   :null}
+        </div>
+        <div class="col-auto d-none d-lg-block">
+
+        </div>
+      </div>
+    </div>
                </div>)
        })}
         
          </div>:null}
+        
+</div>
+
 </div>
     )
 }

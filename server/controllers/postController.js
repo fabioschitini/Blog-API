@@ -12,8 +12,12 @@ exports.post_create_get=(req,res,next)=>{
 exports.post_create_post=[
    
     body('title',`Title must not be empty`).trim().isLength({min:1}).escape(),
-   body('content',`Content must not be empty`).trim().isLength({min:1}).escape(),
-    
+   body('summary',`Content must not be empty`).trim().isLength({min:1}).escape(),
+   body('feature',`Content must not be empty`).trim().isLength({min:1}).escape(),
+   body('tech',`Content must not be empty`).trim().escape(),
+   body('outcome',`Content must not be empty`).trim().isLength({min:1}).escape(),
+   body('learned',`Content must not be empty`).trim().isLength({min:1}).escape(),
+
     (req,res,next)=>{
         if(!req.user){
            return res.send("Need to be logged in to submit post")
@@ -22,9 +26,13 @@ exports.post_create_post=[
         const errors=validationResult(req)
        let post=new Post({
             title:req.body.title,
-           content:req.body.content,
+           summary:req.body.summary,
            date:formatedDate(),
-           published:req.body.status
+           published:req.body.status,
+           tech:req.body.tech,
+           feature:req.body.feature,
+           outcome:req.body.outcome,
+           learned:req.body.learned
         })  
         if( !errors.isEmpty()){  
           console.log(errors)
