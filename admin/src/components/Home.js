@@ -2,17 +2,30 @@ import { useNavigate } from "react-router-dom";
 import {Link} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Spinner} from 'react-bootstrap';
+import Axios from 'axios'
+import { useState,useEffect } from 'react'
+import { Form,Button,Accordion} from 'react-bootstrap';
 
-
+const instance = Axios.create({
+  baseURL: 'https://blooming-peak-71078.herokuapp.com',
+  withCredentials:true
+});
   
 
 const Home = (props) => {
-//console.log(props.backendDataPost[0].title)
-// if(props.user){
-//     return <h1>Log In to use the site</h1>
-// }
+  const [postDetails,setPostDetails]=useState(false)
+ 
+useEffect(()=>{
+  instance.get(`/post`).then(data=>{ 
+    setPostDetails(data.data.post.filter((post,index,array)=>index===array.length-1)[0])
+    }
+      )
+    },[])
+  
+
 return (
     <div>
+<main class="container">
 <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
 <div class="col-md-6 px-0">
   <h1 class="display-4 fst-italic">Title of a longer featured blog post</h1>
@@ -23,16 +36,14 @@ return (
 
 
 
-
          
 <div class="container">
-
 <div class="row mb-2">
-    {props.backendDataPost[0]? 
+{props.backendDataPost[0]? 
     props.backendDataPost.map((data,index,array)=>{
         if(index<3){
           return(
-            <div>
+          
           
           <div class="col-md-6">
   <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
@@ -44,13 +55,10 @@ return (
       <Link to={{pathname:`/post/${data._id}`}}> <a href="" class="stretched-link">Continue reading</a></Link>
     </div>
     <div class="col-auto d-none d-lg-block">
-      <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
 
     </div>
   </div>
-</div>
-
-</div>  )
+</div> )
         }
         
        
@@ -60,11 +68,90 @@ return (
       <span className="visually-hidden">Loading...</span>
     </Spinner>}
 
+
+
        </div>
 </div>
-</div>
+  <div class="row g-5"> 
+  <div class="col-md-8">
+  <h3 class="pb-4 mb-4 fst-italic border-bottom">
+        From the Firehose
+      </h3>
+  <article class="blog-post">
+        <h2 class="blog-post-title mb-1">{postDetails.title}</h2>
+        <p class="blog-post-meta">{postDetails.date} by <a href="#">Fabio</a></p>
 
+        <p>{postDetails.summary}</p>
+        <hr/>
 
-)
+        
+        <h2>Feature</h2>       
+        <p>{postDetails.feature}</p>
+        <hr/>
+        <h3>Built With</h3>
+        <p>This is some additional paragraph placeholder content. It's a slightly shorter version of the other highly repetitive body text used throughout. This is an example unordered list:</p>
+        <ul>
+        {postDetails.tech?
+        
+        postDetails.tech.map(tech=>{
+        return (
+          <li>{tech}</li>
+        )
+       }):null}
+        </ul>
+        <hr/>
+  
+        <h2>Outcome</h2>
+        <p>{postDetails.outcome}</p>
+        <hr/>
+        <h3>What I learned</h3>
+        <p> {postDetails.learned}</p>
+        <hr/>
+      </article>
+    
+     
+  
+    
+     </div>
+
+  <div class="col-md-4">
+      <div class="position-sticky" style={{top: "2rem"}} >
+        <div class="p-4 mb-3 bg-light rounded">
+          <h4 class="fst-italic">About</h4>
+          <p class="mb-0">My most recent publication on this blog, it features...</p>
+        </div>
+
+        <div class="p-4">
+          <h4 class="fst-italic">Archives</h4>
+          <ol class="list-unstyled mb-0">
+            <li><a href="#">March 2021</a></li>
+            <li><a href="#">February 2021</a></li>
+            <li><a href="#">January 2021</a></li>
+            <li><a href="#">December 2020</a></li>
+            <li><a href="#">November 2020</a></li>
+            <li><a href="#">October 2020</a></li>
+            <li><a href="#">September 2020</a></li>
+            <li><a href="#">August 2020</a></li>
+            <li><a href="#">July 2020</a></li>
+            <li><a href="#">June 2020</a></li>
+            <li><a href="#">May 2020</a></li>
+            <li><a href="#">April 2020</a></li>
+          </ol>
+        </div>
+
+        <div class="p-4">
+          <h4 class="fst-italic">Elsewhere</h4>
+          <ol class="list-unstyled">
+            <li><a href="#">GitHub</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Facebook</a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </main>
+</div>)
 }
 export default Home

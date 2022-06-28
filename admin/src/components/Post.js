@@ -90,7 +90,7 @@ const Post = (props) => {
 
 
 
-
+console.log(postDetails.tech)
 
 useEffect(()=>{
     instance.get(`/post/${id}`).then(data=>{ 
@@ -102,31 +102,32 @@ useEffect(()=>{
         <div>
             <div class="row g-5" style={{margin:"0"}}>
             <article class="blog-post">
-        <h2 class="blog-post-title mb-1">Title</h2>
-        <p class="blog-post-meta">date  by <a href="#">Fabio</a></p>
+        <h2 class="blog-post-title mb-1">{postDetails.title}</h2>
+        <p class="blog-post-meta">{postDetails.date} by <a href="#">Fabio</a></p>
 
-        <p>Summary.</p>
+        <p>{postDetails.summary}</p>
         <hr/>
 
         
         <h2>Feature</h2>       
-        <p>Features.</p>
+        <p>{postDetails.feature}</p>
         <hr/>
         <h3>Built With</h3>
         <p>This is some additional paragraph placeholder content. It's a slightly shorter version of the other highly repetitive body text used throughout. This is an example unordered list:</p>
         <ul>
-          
-          <li>Array With all tech and tolls list</li>
-          <li>Second list item with a longer description</li>
-          <li>Third list item to close it out</li>
+       {postDetails.tech.map(tech=>{
+        return (
+          <li>{tech}</li>
+        )
+       })}
         </ul>
         <hr/>
   
         <h2>Outcome</h2>
-        <p>outcome.</p>
+        <p>{postDetails.outcome}</p>
         <hr/>
         <h3>What I learned</h3>
-        <p>  What I Learned This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p>
+        <p> {postDetails.learned}</p>
         <hr/>
 {props.user?<Button style={{marginRight:"20px"}}  onClick={deletePost}>Delete</Button>   :null}
 {props.user?   <Link className="btn btn-primary" to={{
@@ -134,22 +135,8 @@ useEffect(()=>{
             }}>Edit</Link>  :null}
       </article>
 
-
-
-
-
-        {postDetails.content?
         <div> 
-            <div> 
-
-            <header className='post-header'>
-            <h1>{postDetails.title}</h1>
-                </header>
-                <div className='post-content-div'> 
-             <p className='post-content'>{postDetails.content} </p>
-             <p>{postDetails.date}</p>
-             </div>
-             </div>
+        
 
 
            
@@ -200,7 +187,7 @@ useEffect(()=>{
                </div>)
        })}
         
-         </div>:null}
+         </div>
         
 </div>
 
