@@ -4,7 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Spinner} from 'react-bootstrap';
 import Axios from 'axios'
 import { useState,useEffect } from 'react'
-import { Form,Button,Accordion} from 'react-bootstrap';
 
 const instance = Axios.create({
   baseURL: 'https://blooming-peak-71078.herokuapp.com',
