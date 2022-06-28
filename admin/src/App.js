@@ -5,6 +5,7 @@ import Nav from './components/Nav'
 import Login from './components/Login'
 import Home from './components/Home'
 import Post from './components/Post'
+import PostList from './components/PostList'
 import PostEdit from './components/PostEdit'
 import PostCreate from './components/PostCreate'
 
@@ -54,6 +55,8 @@ function App() {
            <Route exact path='/post/create' element={<PostCreate backendDataPost={backendDataPost} setBackendDataPost={setBackendDataPost}  user={userData} />} />
            <Route exact path='/post/:id' element={<Post backendDataPost={backendDataPost} setBackendDataPost={setBackendDataPost}  user={userData} />} />
            <Route exact path='/post/update/:id' element={<PostEdit backendDataPost={backendDataPost} setBackendDataPost={setBackendDataPost}  user={userData} />} />
+           <Route exact path='/postList/:id' element={<PostList backendDataPost={backendDataPost} setBackendDataPost={setBackendDataPost}  user={userData} />} />
+
            </Routes>
          </Router>
        </div>

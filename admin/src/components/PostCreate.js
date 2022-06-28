@@ -35,8 +35,10 @@ const PostCreate = (props) => {
       validationSchema={schema}
       onSubmit={values=>{
         console.log("Submiting")
+       // console.log(values.feature,"featureeeeeeeeeeeeeeeeeeeeeeeee")
+       // console.log(values.tech,"featureeeeeeeeeeeeeeeeeeeeeeeee")
         instance.post(`/post`,{title:values.title,summary:values.summary,feature:values.feature,tech:values.tech,
-          status:true,outcome:values.outcome,learned:values.learned}).then(result=>{
+         status:true,outcome:values.outcome,learned:values.learned}).then(result=>{
             instance.get("/post").then(response=>{ console.log(response.data.post[0])
                 props.setBackendDataPost(response.data.post)
                 console.log("Created with sucess")
@@ -113,20 +115,20 @@ const PostCreate = (props) => {
       <Form.Check 
         type={'checkbox'}
         label={`JS`}
-        value={"javascript"}
+        value={"JavaScript"}
         onChange={handleChange}
         name={"tech"}
         />
         <Form.Check 
         type={'checkbox'}
         label={`Node`}
-        value={"node"}
+        value={"Node.js"}
         onChange={handleChange}
         name={"tech"}
         /><Form.Check 
         type={'checkbox'}
         label={`React`}
-        value={"react"}
+        value={"React"}
         onChange={handleChange}
         name={"tech"}
         />
@@ -136,14 +138,14 @@ const PostCreate = (props) => {
        <Form.Check 
         type={'checkbox'}
         label={`MongoDB`}
-        value={"mongo"}
+        value={"MongoDB"}
         onChange={handleChange}
         name={"tech"}
         />
          <Form.Check 
         type={'checkbox'}
         label={`Bootstrap`}
-        value={"bootstrap"}
+        value={"Bootstrap"}
         onChange={handleChange}
         name={"tech"}
         />

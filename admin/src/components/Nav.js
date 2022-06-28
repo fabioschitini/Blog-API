@@ -28,7 +28,6 @@ console.log("uSerrrr",props.user)
     return (
        <div> 
 
-        {props.user?
          <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
          <Container>
          <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
@@ -36,8 +35,21 @@ console.log("uSerrrr",props.user)
          <Navbar.Collapse id="responsive-navbar-nav">
            <Nav className="me-auto">
            <Link to="/">  <Nav.Link href="#home">Home Page</Nav.Link></Link>
-           <Link to="/post/create">  <Nav.Link href="#home">Create Post</Nav.Link></Link>
+           {props.user?
            <Link to="/">  <Nav.Link onClick={logOut} href="#home">Log Out</Nav.Link></Link>
+           :
+           <Link to="/login">  <Nav.Link href="#home">Login</Nav.Link></Link>
+           }
+             {props.user?
+           <Link to="/post/create">  <Nav.Link href="#home">Create Post</Nav.Link></Link>
+           :
+           null
+           }
+            <Link to="/postList/all">  <Nav.Link href="#home">All Projects</Nav.Link></Link>
+           <Link to="/postList/node">  <Nav.Link href="#home">Node</Nav.Link></Link>
+           <Link to="/postList/node">  <Nav.Link href="#home">React</Nav.Link></Link>
+           <Link to="/postList/node">  <Nav.Link href="#home">MongoDb</Nav.Link></Link>
+           <Link to="/postList/node">  <Nav.Link href="#home">Bootstrap</Nav.Link></Link>
 
            </Nav>
          
@@ -46,19 +58,8 @@ console.log("uSerrrr",props.user)
        </Navbar>
       
         
-        :  <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
-        <Container>
-        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto">
-          <Link to="/login">  <Nav.Link href="#home">Login</Nav.Link></Link>
-          </Nav>
-        </Navbar.Collapse>
-        </Container>
-      </Navbar>
         
-    }
+   
 
               
            
