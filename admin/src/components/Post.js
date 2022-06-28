@@ -115,11 +115,13 @@ useEffect(()=>{
         <h3>Built With</h3>
         <p>This is some additional paragraph placeholder content. It's a slightly shorter version of the other highly repetitive body text used throughout. This is an example unordered list:</p>
         <ul>
-       {postDetails.tech.map(tech=>{
+        {postDetails.tech?
+        
+        postDetails.tech.map(tech=>{
         return (
           <li>{tech}</li>
         )
-       })}
+       }):null}
         </ul>
         <hr/>
   
@@ -136,10 +138,7 @@ useEffect(()=>{
       </article>
 
         <div> 
-        
-
-
-           
+ 
              <p className='add-comment' onClick={moreComments}>See more comments+</p>
           
               <Accordion defaultActiveKey="0">
@@ -177,7 +176,7 @@ useEffect(()=>{
           <h3 class="mb-0">{comment.title}</h3>
           <div class="mb-1 text-muted">{comment.date}</div>
           <p class="card-text mb-auto">{comment.content}</p>
-          {props.user?<Button style={{marginRight:"20px",width:"20%"}}  onClick={deleteComment}>Delete</Button>   :null}
+          {props.user?<Button id={comment._id} style={{marginRight:"20px",width:"20%"}}  onClick={deleteComment}>Delete</Button>   :null}
         </div>
         <div class="col-auto d-none d-lg-block">
 

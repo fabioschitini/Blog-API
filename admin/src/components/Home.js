@@ -1,10 +1,8 @@
-import { useNavigate } from "react-router-dom";
 import {Link} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Spinner} from 'react-bootstrap';
 import Axios from 'axios'
 import { useState,useEffect } from 'react'
-import { Form,Button,Accordion} from 'react-bootstrap';
 
 const instance = Axios.create({
   baseURL: 'https://blooming-peak-71078.herokuapp.com',
@@ -28,9 +26,9 @@ return (
 <main class="container">
 <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
 <div class="col-md-6 px-0">
-  <h1 class="display-4 fst-italic">Title of a longer featured blog post</h1>
-  <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
-  <p class="lead mb-0"><a href="#" class="text-white fw-bold">Continue reading...</a></p>
+  <h1 class="display-4 fst-italic">A litle Resume About Me</h1>
+  <p class="lead my-3">Just a Post Containing information about me,myself and I. Contains a lilte summary about my carrer, a lilte portfolio of my own</p>
+  <p class="lead mb-0"><a href="/About-Me" class="text-white fw-bold">Continue reading...</a></p>
 </div>
 </div>
 
@@ -41,10 +39,8 @@ return (
 <div class="row mb-2">
 {props.backendDataPost[0]? 
     props.backendDataPost.map((data,index,array)=>{
-        if(index<3){
+        if(index>array.length-3){
           return(
-          
-          
           <div class="col-md-6">
   <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
     <div class="col p-4 d-flex flex-column position-static">
@@ -60,8 +56,7 @@ return (
   </div>
 </div> )
         }
-        
-       
+
       })
      
       : <Spinner animation="border" role="status">
@@ -75,7 +70,7 @@ return (
   <div class="row g-5"> 
   <div class="col-md-8">
   <h3 class="pb-4 mb-4 fst-italic border-bottom">
-        From the Firehose
+        Welcome to my Blog/Portfolio
       </h3>
   <article class="blog-post">
         <h2 class="blog-post-title mb-1">{postDetails.title}</h2>
@@ -122,29 +117,24 @@ return (
         </div>
 
         <div class="p-4">
-          <h4 class="fst-italic">Archives</h4>
+          <h4 class="fst-italic">Divided by Tech</h4>
           <ol class="list-unstyled mb-0">
-            <li><a href="#">March 2021</a></li>
-            <li><a href="#">February 2021</a></li>
-            <li><a href="#">January 2021</a></li>
-            <li><a href="#">December 2020</a></li>
-            <li><a href="#">November 2020</a></li>
-            <li><a href="#">October 2020</a></li>
-            <li><a href="#">September 2020</a></li>
-            <li><a href="#">August 2020</a></li>
-            <li><a href="#">July 2020</a></li>
-            <li><a href="#">June 2020</a></li>
-            <li><a href="#">May 2020</a></li>
-            <li><a href="#">April 2020</a></li>
+          <li><a href="/postList/all">All</a></li>
+            <li><a href="/postList/Node.js">Node</a></li>
+            <li><a href="/postList/React">React</a></li>
+            <li><a href="/postList/MongoDb">MongoDb</a></li>
+            <li><a href="/postList/Bootstrap">Bootstrap</a></li>
           </ol>
         </div>
 
         <div class="p-4">
           <h4 class="fst-italic">Elsewhere</h4>
           <ol class="list-unstyled">
-            <li><a href="#">GitHub</a></li>
-            <li><a href="#">Twitter</a></li>
-            <li><a href="#">Facebook</a></li>
+            <li><a  target="_blank" rel="noopener noreferrer" href="https://github.com/fabioschitini">GitHub</a></li>
+            <li><a href="#">Linkedin</a></li>
+            <li><a  href='https://www.scribd.com/document/553485298/My-Resume'  target="_blank" rel="noopener noreferrer">CV↓ </a></li>
+            <li><a  target="_blank" rel="noopener noreferrer"  href='https://www.scribd.com/document/565717418/My-Resume-1'>Curriculo↓  </a></li>
+
           </ol>
         </div>
       </div>

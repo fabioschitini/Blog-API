@@ -1,20 +1,67 @@
-import { useNavigate } from "react-router-dom";
 import {useParams } from 'react-router-dom'
-import Axios from 'axios'
+import {Link} from 'react-router-dom'
+import { Spinner} from 'react-bootstrap';
 
-const instance = Axios.create({
-    baseURL: 'https://blooming-peak-71078.herokuapp.com',
-    withCredentials:true
-  });
+
 
 const PostList = (props) => {
-    const navigate = useNavigate();
+
 
     const { id } = useParams()  
     console.log(id,"iddddddddddddddddddddddddddddddddddddd")
 
       return (
-<h1>Post List</h1>
+        <div class="container">
+        <div class="row mb-2">
+        {props.backendDataPost[0].tech? 
+            props.backendDataPost.map((data)=>{
+                if(id==='all'){
+                  return(
+                  <div class="col-md-6">
+                     <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                         <div class="col p-4 d-flex flex-column position-static">
+                             <strong class="d-inline-block mb-2 text-primary">World</strong>
+                                <h3 class="mb-0">{data.title}</h3>
+                            <div class="mb-1 text-muted">{data.date}</div>
+                             <p class="card-text mb-auto">{data.content}</p>
+                                <Link to={{pathname:`/post/${data._id}`}}> <a href="" class="stretched-link">Continue reading</a></Link>
+                            </div>
+                    
+          </div>
+        </div> )
+                }
+           
+
+                    else if(data.tech.includes(id)){
+                        return(
+                            <div class="col-md-6">
+                    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                      <div class="col p-4 d-flex flex-column position-static">
+                        <strong class="d-inline-block mb-2 text-primary">World</strong>
+                        <h3 class="mb-0">{data.title}</h3>
+                        <div class="mb-1 text-muted">{data.date}</div>
+                        <p class="card-text mb-auto">{data.content}</p>
+                        <Link to={{pathname:`/post/${data._id}`}}> <a href="" class="stretched-link">Continue reading</a></Link>
+                      </div>
+                      <div class="col-auto d-none d-lg-block">
+                  
+                      </div>
+                    </div>
+                  </div> )
+                    }
+
+               
+            
+              })
+             
+              : <Spinner animation="border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </Spinner>}
+        
+        
+        
+               </div>
+        </div>
     )
 }
 export default PostList

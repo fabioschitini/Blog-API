@@ -8,6 +8,8 @@ import Post from './components/Post'
 import PostList from './components/PostList'
 import PostEdit from './components/PostEdit'
 import PostCreate from './components/PostCreate'
+import AboutMe from './components/AboutMe'
+
 
 //import PostUpdate from './components/PostUpdate'
 import Axios from 'axios'
@@ -56,6 +58,7 @@ function App() {
            <Route exact path='/post/:id' element={<Post backendDataPost={backendDataPost} setBackendDataPost={setBackendDataPost}  user={userData} />} />
            <Route exact path='/post/update/:id' element={<PostEdit backendDataPost={backendDataPost} setBackendDataPost={setBackendDataPost}  user={userData} />} />
            <Route exact path='/postList/:id' element={<PostList backendDataPost={backendDataPost} setBackendDataPost={setBackendDataPost}  user={userData} />} />
+           <Route exact path='/About-Me' element={<AboutMe backendDataPost={backendDataPost} setBackendDataPost={setBackendDataPost}  user={userData} />} />
 
            </Routes>
          </Router>
