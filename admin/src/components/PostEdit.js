@@ -29,16 +29,7 @@ const PostEdit = (props) => {
     
       });
 
-    function onSubmit(e){
-        e.preventDefault()
-        console.log("Submiting")
-        instance.post(`/post/update/${id}`,{title,content}).then(result=>{
-            instance.get("/post").then(response=>{ console.log(response.data.post[0])
-                props.setBackendDataPost(response.data.post)
-                navigate("/")
-            })
-        })
-    } 
+   
 
 useEffect(()=>{
 if(props.backendDataPost[0].title){
@@ -55,7 +46,7 @@ return (
           validationSchema={schema}
           onSubmit={values=>{
             console.log("Submiting")
-            instance.post(`/post`,{title:values.title,summary:values.summary,feature:values.feature,tech:values.tech,
+            instance.post(`/post/update/${id}`,{title:values.title,summary:values.summary,feature:values.feature,tech:values.tech,
               status:true,outcome:values.outcome,learned:values.learned}).then(result=>{
                 instance.get("/post").then(response=>{ console.log(response.data.post[0])
                     props.setBackendDataPost(response.data.post)

@@ -1,7 +1,7 @@
-import { useState,useEffect } from 'react'
+import { useState } from 'react'
 import Axios from 'axios'
 import { useNavigate } from "react-router-dom";
-import { Button,Col,Form,Row,InputGroup,Container} from 'react-bootstrap';
+import { Button,Col,Form} from 'react-bootstrap';
 import { Formik } from 'formik';
 
 //const instance = Axios.create({
@@ -21,12 +21,7 @@ const Login = (props) => {
     const [errorUserMessage,setErrorUserMessage]=useState(false)
     const [errorPasswordMessage,setErrorPasswordMessage]=useState(false)
 
-    const [username,setUserName]=useState()
-    const [password,setPassword]=useState('')
-
-    
-
- 
+   
     return (
       <div class="container col-xl-10 col-xxl-8 px-4 py-5"> 
         <div class="row align-items-center g-lg-5 py-5">

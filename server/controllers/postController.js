@@ -10,15 +10,10 @@ exports.post_create_get=(req,res,next)=>{
 }
 
 exports.post_create_post=[
-   
-    body('title',`Title must not be empty`).trim().isLength({min:1}).escape(),
-   body('summary',`Content must not be empty`).trim().isLength({min:1}).escape(),
-   body('feature',`Content must not be empty`).trim().isLength({min:1}).escape(),
-   body('tech',`Content must not be empty`).trim().escape(),
-   body('outcome',`Content must not be empty`).trim().isLength({min:1}).escape(),
-   body('learned',`Content must not be empty`).trim().isLength({min:1}).escape(),
+ 
 
     (req,res,next)=>{
+        console.log(req.body,"bodyyyyyyyyyyyyyyyyyyyyyyyyyyy")
         if(!req.user){
            return res.send("Need to be logged in to submit post")
         }
