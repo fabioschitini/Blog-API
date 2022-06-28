@@ -6,9 +6,10 @@ const PostSchema=new Schema({
     summary:{type:String,required:true},
     date:{type:String,required:true},
     published:{type:Boolean,required:true},
-    tech:[{type:String}],
+    tech:{type:Array,required:false},
     outcome:{type:String,required:true},
     learned:{type:String,required:true},
+    feature:{type:String,required:true}
 
 
   }

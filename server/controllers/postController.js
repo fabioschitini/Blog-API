@@ -14,9 +14,9 @@ exports.post_create_post=[
 
     (req,res,next)=>{
         console.log(req.body,"bodyyyyyyyyyyyyyyyyyyyyyyyyyyy")
-        if(!req.user){
-           return res.send("Need to be logged in to submit post")
-        }
+      //  if(!req.user){
+        //   return res.send("Need to be logged in to submit post")
+        //}
         console.log('Should not appear if not logged in')
         const errors=validationResult(req)
        let post=new Post({
@@ -57,20 +57,23 @@ exports.post_update_get=(req,res,next)=>{
 
 exports.post_update_post=[
 
-    body('title',`Title must not be empty`).trim().isLength({min:3}).escape(),
-   body('content',`Content must not be empty`).trim().isLength({min:3}).escape(),
+ 
     
     (req,res,next)=>{
-         if(!req.user){
-             console.log("Need to be logged in to submit post")
-            return res.send("Need to be logged in to submit post")
-         }
+      //   if(!req.user){
+        //     console.log("Need to be logged in to submit post")
+         //   return res.send("Need to be logged in to submit post")
+        // }
         const errors=validationResult(req)
         let post=new Post({
             title:req.body.title,
-           content:req.body.content,
-           date:formatedDate(),
-           published:req.body.status,
+            summary:req.body.summary,
+            date:formatedDate(),
+            published:req.body.status,
+            tech:req.body.tech,
+            feature:req.body.feature,
+            outcome:req.body.outcome,
+            learned:req.body.learned,
            _id:req.params.id
         })
         if( !errors.isEmpty()){

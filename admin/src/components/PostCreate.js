@@ -7,7 +7,7 @@ import * as yup from 'yup';
 
 
 const instance = Axios.create({
-    baseURL: 'https://blooming-peak-71078.herokuapp.com',
+    baseURL: 'http://localhost:3001/',
     withCredentials:true
   });
 
@@ -34,8 +34,8 @@ const PostCreate = (props) => {
       validationSchema={schema}
       onSubmit={values=>{
         console.log("Submiting")
-       // console.log(values.feature,"featureeeeeeeeeeeeeeeeeeeeeeeee")
-       // console.log(values.tech,"featureeeeeeeeeeeeeeeeeeeeeeeee")
+        console.log(values.feature,"featureeeeeeeeeeeeeeeeeeeeeeeee")
+        console.log(values.tech,"featureeeeeeeeeeeeeeeeeeeeeeeee")
         instance.post(`/post`,{title:values.title,summary:values.summary,feature:values.feature,tech:values.tech,
          status:true,outcome:values.outcome,learned:values.learned}).then(result=>{
             instance.get("/post").then(response=>{ console.log(response.data.post[0])
