@@ -41,7 +41,7 @@ const PostList = (props) => {
                         <h3 class="mb-0">{data.title}</h3>
                         <div class="mb-1 text-muted">{data.date}</div>
                         <p class="card-text mb-auto">{data.summary}</p>
-                        <Link to={{pathname:`/post/${data._id}`}}> <a href="" class="stretched-link">Continue reading</a></Link>
+                        <Link to={{pathname:`/Blog-API/post/${data._id}`}}> <a href="" class="stretched-link">Continue reading</a></Link>
                       </div>
                       <div class="col-auto d-none d-lg-block">
                   
