@@ -121,11 +121,13 @@ return (
         <div class="p-4">
           <h4 class="fst-italic">Divided by Tech</h4>
           <ol class="list-unstyled mb-0">
-          <li><a href="/Blog-API/postList/all">All</a></li>
-            <li><a href="/Blog-API/postList/Node.js">Node</a></li>
-            <li><a href="/Blog-API/postList/React">React</a></li>
-            <li><a href="/Blog-API/postList/MongoDB">MongoDb</a></li>
-            <li><a href="/Blog-API/postList/Bootstrap">Bootstrap</a></li>
+          <li>
+        <li> <Link  to="/Blog-API/list/all" >All</Link></li>
+        <li>  <Link  to="/Blog-API/list/Node.js" >Node</Link></li>
+        <li>  <Link  to="/Blog-API/list/React" >React</Link></li>
+        <li>  <Link  to="/Blog-API/list/MongoDB" >MongoDb</Link>  </li>
+        <li>   <Link  to="/Blog-API/list/Bootstrap" >Bootstrap</Link></li>
+            </li>
           </ol>
         </div>
 
