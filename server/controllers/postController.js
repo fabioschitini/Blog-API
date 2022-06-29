@@ -52,7 +52,7 @@ exports.post_details_get=(req,res,next)=>{
 
 
 exports.post_update_get=(req,res,next)=>{
-    Post.findById(req.params.id).then(post=>res.send({post,errors:[],user:req.user}))
+    res.json({user:req.user})
 }
 
 exports.post_update_post=[
