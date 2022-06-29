@@ -47,11 +47,7 @@ console.log("uSerrrr",props.user)
            }
    
 
-   <NavDropdown style={{color:"rgba(0,0,0,.9)"}} title="Projects" id="nav-dropdown">
-            <NavDropdown.Item href="/Blog-API/list/all"  eventKey="4.1"> All</NavDropdown.Item>
-            <NavDropdown.Item href='/Blog-API/list/React' eventKey="4.2">React</NavDropdown.Item>
-
-      </NavDropdown>
+   
 
            <Link style={{textDecoration: 'none',color: '#212529',}} to="/Blog-API/list/all" ><Nav.Link href="#home">All</Nav.Link></Link>
           <Link style={{textDecoration: 'none',color: '#212529',}} to="/Blog-API/list/Node.js" ><Nav.Link href="#home">Node</Nav.Link></Link>
