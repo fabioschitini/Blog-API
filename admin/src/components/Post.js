@@ -69,7 +69,7 @@ const Post = (props) => {
                 console.log("deleted with sucess")
                 instance.get(`/comments`).then(data=>{          
                     setComment(data.data.comments.filter(comment=>comment.post[0]===id))})
-                    console.log("Sucess")
+                    console.log("Sucess delete")
 
             })
         }
@@ -131,7 +131,7 @@ useEffect(()=>{
         <h3>What I learned</h3>
         <p> {postDetails.learned}</p>
         <hr/>
-{props.user?<Button style={{marginRight:"20px"}}  onClick={deletePost}>Delete</Button>   :null}
+{props.user?<Button id={postDetails._id} style={{marginRight:"20px"}}  onClick={deletePost}>Delete</Button>   :null}
 {props.user?   <Link className="btn btn-primary" to={{
                 pathname:`/post/update/${id}`
             }}>Edit</Link>  :null}
