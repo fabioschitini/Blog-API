@@ -73,7 +73,7 @@ return (
       {postDetails?
       <article class="blog-post">
       <h2 class="blog-post-title mb-1">{postDetails.title}</h2>
-      <p class="blog-post-meta">{postDetails.date} by <Link to="/Blog-API/About-Me">Fabio</Link>
+      <p class="blog-post-meta">{postDetails.date} by <Link to="/Blog-API/About-Me">Fabio</Link></p>
 
       <p>{postDetails.summary}</p>
       <hr/>
