@@ -46,11 +46,11 @@ console.log("uSerrrr",props.user)
            null
            }
             <NavDropdown style={{color:"rgba(0,0,0,.9)"}} title="Projects" id="nav-dropdown">
-        <NavDropdown.Item href="/Blog-API/list/all" to="/postList/all" eventKey="4.1">All Projects</NavDropdown.Item>
-         <NavDropdown.Item href="/Blog-API/postList/Node.js" eventKey="4.2">Node</NavDropdown.Item>
-          <NavDropdown.Item href="/Blog-API/postList/React" eventKey="4.3">React</NavDropdown.Item>
-          <NavDropdown.Item href="/Blog-API/postList/MongoDB"  eventKey="4.4">MongoDb</NavDropdown.Item>
-         <NavDropdown.Item href="/Blog-API/postList/Bootstrap"  eventKey="4.4">Bootstrap</NavDropdown.Item>
+            <NavDropdown.Item  eventKey="4.2"> <Link style={{textDecoration: 'none',color: '#212529',}} to="/Blog-API/list/all" >All Projects</Link></NavDropdown.Item>
+         <NavDropdown.Item  eventKey="4.2"> <Link style={{textDecoration: 'none',color: '#212529',}} to="/Blog-API/list/Node.js" >Node</Link></NavDropdown.Item>
+          <NavDropdown.Item eventKey="4.3"><Link style={{textDecoration: 'none',color: '#212529',}} to="/Blog-API/list/React" >React</Link></NavDropdown.Item>
+          <NavDropdown.Item eventKey="4.4"><Link style={{textDecoration: 'none',color: '#212529',}} to="/Blog-API/list/MongoDB" >Mongo DB</Link></NavDropdown.Item>
+         <NavDropdown.Item eventKey="4.4"><Link style={{textDecoration: 'none',color: '#212529',}} to="/Blog-API/list/Bootstrap" >Bootstrap</Link></NavDropdown.Item>
       </NavDropdown>
       <a class="nav-link"  href='https://www.scribd.com/document/553485298/My-Resume' download='CV.pdf' target="_blank" rel="noopener noreferrer" > CV↓  </a>
       <a class="nav-link"  target="_blank" rel="noopener noreferrer"  href='https://www.scribd.com/document/565717418/My-Resume-1' > Curriculo↓ </a>
