@@ -36,7 +36,7 @@ const Post = (props) => {
           console.log(result.data,"resukt of deleteeeee")
             props.setBackendDataPost(result.data)
             console.log("deleted with sucess")
-            navigate("/")
+            navigate("/Blog-API/")
         })
     }
 
@@ -104,7 +104,7 @@ useEffect(()=>{
             <div class="row g-5" style={{margin:"0"}}>
             <article class="blog-post">
         <h2 class="blog-post-title mb-1">{postDetails.title}</h2>
-        <p class="blog-post-meta">{postDetails.date} by <a href="#">Fabio</a></p>
+        <p class="blog-post-meta">{postDetails.date} by <a href="/Blog-API/About-Me">Fabio</a></p>
 
         <p>{postDetails.summary}</p>
         <hr/>
@@ -134,7 +134,7 @@ useEffect(()=>{
         <hr/>
 {props.user?<Button id={postDetails._id} style={{marginRight:"20px"}}  onClick={deletePost}>Delete</Button>   :null}
 {props.user?   <Link className="btn btn-primary" to={{
-                pathname:`/post/update/${id}`
+                pathname:`/Blog-API/post/update/${id}`
             }}>Edit</Link>  :null}
       </article> 
 

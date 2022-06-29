@@ -28,7 +28,7 @@ return (
 <div class="col-md-6 px-0">
   <h1 class="display-4 fst-italic">A litle Resume About Me</h1>
   <p class="lead my-3">Just a Post Containing information about me,myself and I. Contains a lilte summary about my carrer, a lilte portfolio of my own</p>
-  <p class="lead mb-0"><a href="/About-Me" class="text-white fw-bold">Continue reading...</a></p>
+  <p class="lead mb-0"><a href="/Blog-API/About-Me" class="text-white fw-bold">Continue reading...</a></p>
 </div>
 </div>
 
@@ -48,7 +48,7 @@ return (
       <h3 class="mb-0">{data.title}</h3>
       <div class="mb-1 text-muted">{data.date}</div>
       <p class="card-text mb-auto">{data.summary}</p>
-      <Link to={{pathname:`/post/${data._id}`}}> <a href="" class="stretched-link">Continue reading</a></Link>
+      <Link to={{pathname:`/Blog-API/post/${data._id}`}}> <a href="" class="stretched-link">Continue reading</a></Link>
     </div>
     <div class="col-auto d-none d-lg-block">
 
@@ -73,7 +73,7 @@ return (
       {postDetails?
       <article class="blog-post">
       <h2 class="blog-post-title mb-1">{postDetails.title}</h2>
-      <p class="blog-post-meta">{postDetails.date} by <a href="#">Fabio</a></p>
+      <p class="blog-post-meta">{postDetails.date} by <a href="/Blog-API/About-Me">Fabio</a></p>
 
       <p>{postDetails.summary}</p>
       <hr/>
@@ -121,11 +121,11 @@ return (
         <div class="p-4">
           <h4 class="fst-italic">Divided by Tech</h4>
           <ol class="list-unstyled mb-0">
-          <li><a href="/postList/all">All</a></li>
-            <li><a href="/postList/Node.js">Node</a></li>
-            <li><a href="/postList/React">React</a></li>
-            <li><a href="/postList/MongoDb">MongoDb</a></li>
-            <li><a href="/postList/Bootstrap">Bootstrap</a></li>
+          <li><a href="/Blog-API/postList/all">All</a></li>
+            <li><a href="/Blog-API/postList/Node.js">Node</a></li>
+            <li><a href="/Blog-API/postList/React">React</a></li>
+            <li><a href="/Blog-API/postList/MongoDB">MongoDb</a></li>
+            <li><a href="/Blog-API/postList/Bootstrap">Bootstrap</a></li>
           </ol>
         </div>
 

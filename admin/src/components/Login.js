@@ -49,7 +49,7 @@ const Login = (props) => {
               setErrorPasswordMessage(false)
 
               props.setUserData(result.data.user)
-              navigate("/")
+              navigate("/Blog-API")
             }
         })
       }}

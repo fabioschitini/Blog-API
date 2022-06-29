@@ -41,7 +41,7 @@ const PostCreate = (props) => {
             instance.get("/post").then(response=>{ console.log(response.data.post[0])
                 props.setBackendDataPost(response.data.post)
                 console.log("Created with sucess")
-                navigate("/")
+                navigate("/Blog-API")
             })
         })
 

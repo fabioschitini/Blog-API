@@ -52,13 +52,13 @@ function App() {
       <Router>
            <Nav user={userData} setUserData={setUserData}/> 
            <Routes>
-           <Route exact path='/' element={<Home backendDataPost={backendDataPost} user={userData} />} />
-           <Route exact path='/login' element={<Login setUserData={setUserData} />} />
-           <Route exact path='/post/create' element={<PostCreate backendDataPost={backendDataPost} setBackendDataPost={setBackendDataPost}  user={userData} />} />
-           <Route exact path='/post/:id' element={<Post backendDataPost={backendDataPost} setBackendDataPost={setBackendDataPost}  user={userData} />} />
-           <Route exact path='/post/update/:id' element={<PostEdit backendDataPost={backendDataPost} setBackendDataPost={setBackendDataPost}  user={userData} />} />
-           <Route exact path='/postList/:id' element={<PostList backendDataPost={backendDataPost} setBackendDataPost={setBackendDataPost}  user={userData} />} />
-           <Route exact path='/About-Me' element={<AboutMe backendDataPost={backendDataPost} setBackendDataPost={setBackendDataPost}  user={userData} />} />
+           <Route exact path='/Blog-API/' element={<Home backendDataPost={backendDataPost} user={userData} />} />
+           <Route exact path='Blog-API/login' element={<Login setUserData={setUserData} />} />
+           <Route exact path='Blog-API/post/create' element={<PostCreate backendDataPost={backendDataPost} setBackendDataPost={setBackendDataPost}  user={userData} />} />
+           <Route exact path='Blog-API/post/:id' element={<Post backendDataPost={backendDataPost} setBackendDataPost={setBackendDataPost}  user={userData} />} />
+           <Route exact path='Blog-API/post/update/:id' element={<PostEdit backendDataPost={backendDataPost} setBackendDataPost={setBackendDataPost}  user={userData} />} />
+           <Route exact path='Blog-API/postList/:id' element={<PostList backendDataPost={backendDataPost} setBackendDataPost={setBackendDataPost}  user={userData} />} />
+           <Route exact path='Blog-API/About-Me' element={<AboutMe backendDataPost={backendDataPost} setBackendDataPost={setBackendDataPost}  user={userData} />} />
 
            </Routes>
          </Router>
