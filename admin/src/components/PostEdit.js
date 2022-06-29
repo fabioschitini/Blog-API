@@ -8,7 +8,7 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 
 const instance = Axios.create({
-    baseURL: 'https://blooming-peak-71078.herokuapp.com',
+    baseURL: 'http://localhost:3001/',
     withCredentials:true
   });
 
@@ -17,8 +17,11 @@ const PostEdit = (props) => {
 
     const { id } = useParams()  
     const [title,setTitle]=useState(false)
-    const [content,setContent]=useState(false)
-
+    const [summary,setSummary]=useState(false)
+    const [outcome,setOutcome]=useState(false)
+    const [feature,setFeature]=useState(false)
+   // const [tech,setTech]=useState(false)
+    const [learned,setLearned]=useState(false)
 
     const schema = yup.object().shape({
         title: yup.string().required("Esse campo é obrigatorio"),
@@ -34,7 +37,11 @@ const PostEdit = (props) => {
 useEffect(()=>{
 if(props.backendDataPost[0].title){
     setTitle(props.backendDataPost.filter(data=>data._id===id)[0].title)
-    setContent(props.backendDataPost.filter(data=>data._id===id)[0].content)
+    setSummary(props.backendDataPost.filter(data=>data._id===id)[0].summary)
+    setFeature(props.backendDataPost.filter(data=>data._id===id)[0].feature)
+    setLearned(props.backendDataPost.filter(data=>data._id===id)[0].learned)
+    setOutcome(props.backendDataPost.filter(data=>data._id===id)[0].outcome)
+
     console.log(title,"titleeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
 }},[props.backendDataPost])
 return (
@@ -47,7 +54,7 @@ return (
           onSubmit={values=>{
             console.log("Submiting")
             instance.post(`/post/update/${id}`,{title:values.title,summary:values.summary,feature:values.feature,tech:values.tech,
-              status:true,outcome:values.outcome,learned:values.learned}).then(result=>{
+              status:true,outcome:values.outcome,learned:values.learned,id}).then(result=>{
                 instance.get("/post").then(response=>{ console.log(response.data.post[0])
                     props.setBackendDataPost(response.data.post)
                     console.log("Created with sucess")
@@ -59,10 +66,10 @@ return (
           }}
           initialValues={{
             title: title,
-            summary:content,
-            feature: 'fuck',
-            outcome: '',
-            learned: "",
+            summary: summary,
+            feature: feature,
+            outcome: outcome,
+            learned: learned,
           }}
         >
           {({

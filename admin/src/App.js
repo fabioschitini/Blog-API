@@ -14,14 +14,14 @@ import AboutMe from './components/AboutMe'
 //import PostUpdate from './components/PostUpdate'
 import Axios from 'axios'
 const instance = Axios.create({
-  baseURL: 'https://blooming-peak-71078.herokuapp.com',
+  baseURL: 'http://localhost:3001/',
   withCredentials:true
 
 });
 
 function App() {
   const [backendDataPost,setBackendDataPost]=useState([{}])
-  const [userData,setUserData]=useState([{}])
+  const [userData,setUserData]=useState(undefined)
 //baby do bab do birulaibe laibe'
 
 

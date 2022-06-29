@@ -29,7 +29,8 @@ router.post(
                let expire=3600  
                const accessToken=jwt.sign({user},'secreteKey',{expiresIn:`${expire}s`})
                console.log(accessToken)
-                req.session.jwt=accessToken
+                req.header.token=accessToken
+                console.log(req.header,'sessioonnnnnnnnnnnnnnn2222222222222')
            res.json({user:'user'})
               } else {
                 // passwords do not match!
@@ -47,13 +48,14 @@ router.post(
 
   function authenticateToken(req,res,next){
     let token;
-    console.log(req.session,'sessioonnnnnnnnnnnnnnn')
-token=req.session.jwt
+    console.log(req.header.token,'cookieeeeeeeeeeeeeeeeeeeeeeeee')
+token=req.header.token
+//next()
 if(!token) {return res.json({user:undefined})}
 jwt.verify(token,'secreteKey',(err,user)=>{
-    if(err) return res.json({user:undefined})
-    req.user=user
-    next()
+   if(err) return res.json({user:undefined})
+   req.user=user
+   next()
 })
 }
 
@@ -65,8 +67,8 @@ jwt.verify(token,'secreteKey',(err,user)=>{
     // req.session.destroy(function (err) {
     //   res.redirect('/post'); //Inside a callback… bulletproof!
     // });
-  req.session.jwt=''
-    res.cookie("jwt",'',{maxAge:1})
+  req.header.token=undefined
+   // res.cookie("jwt",'',{maxAge:1})
     res.json({user:undefined})
     console.log('loggign out i think')
   }); 
