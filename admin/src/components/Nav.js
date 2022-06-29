@@ -46,7 +46,7 @@ console.log("uSerrrr",props.user)
            null
            }
             <NavDropdown style={{color:"rgba(0,0,0,.9)"}} title="Projects" id="nav-dropdown">
-        <NavDropdown.Item href="/Blog-API/postList/all" to="/postList/all" eventKey="4.1">All Projects</NavDropdown.Item>
+        <NavDropdown.Item href="/Blog-API/all" to="/postList/all" eventKey="4.1">All Projects</NavDropdown.Item>
          <NavDropdown.Item href="/Blog-API/postList/Node.js" eventKey="4.2">Node</NavDropdown.Item>
           <NavDropdown.Item href="/Blog-API/postList/React" eventKey="4.3">React</NavDropdown.Item>
           <NavDropdown.Item href="/Blog-API/postList/MongoDB"  eventKey="4.4">MongoDb</NavDropdown.Item>
