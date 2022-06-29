@@ -135,7 +135,7 @@ useEffect(()=>{
 {props.user?   <Link className="btn btn-primary" to={{
                 pathname:`/post/update/${id}`
             }}>Edit</Link>  :null}
-      </article>
+      </article> 
 
         <div> 
  
