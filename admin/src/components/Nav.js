@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom'
 import Axios from 'axios'
 import { useNavigate } from 'react-router-dom';
-import { Navbar,Nav,Container,NavDropdown} from 'react-bootstrap';
+import { Navbar,Nav,Container,NavDropdown,Col,Row} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const instance = Axios.create({
@@ -45,13 +45,20 @@ console.log("uSerrrr",props.user)
            :
            null
            }
-            <NavDropdown style={{color:"rgba(0,0,0,.9)"}} title="Projects" id="nav-dropdown">
-            <NavDropdown.Item  eventKey="4.2"> <Link style={{textDecoration: 'none',color: '#212529',}} to="/Blog-API/list/all" >All Projects</Link></NavDropdown.Item>
-         <NavDropdown.Item  eventKey="4.2"> <Link style={{textDecoration: 'none',color: '#212529',}} to="/Blog-API/list/Node.js" >Node</Link></NavDropdown.Item>
-          <NavDropdown.Item eventKey="4.3"><Link style={{textDecoration: 'none',color: '#212529',}} to="/Blog-API/list/React" >React</Link></NavDropdown.Item>
-          <NavDropdown.Item eventKey="4.4"><Link style={{textDecoration: 'none',color: '#212529',}} to="/Blog-API/list/MongoDB" >Mongo DB</Link></NavDropdown.Item>
-         <NavDropdown.Item eventKey="4.4"><Link style={{textDecoration: 'none',color: '#212529',}} to="/Blog-API/list/Bootstrap" >Bootstrap</Link></NavDropdown.Item>
+   
+
+   <NavDropdown style={{color:"rgba(0,0,0,.9)"}} title="Projects" id="nav-dropdown">
+            <NavDropdown.Item href="/Blog-API/list/all"  eventKey="4.1"> All</NavDropdown.Item>
+            <NavDropdown.Item href='/Blog-API/list/React' eventKey="4.2">React</NavDropdown.Item>
+
       </NavDropdown>
+
+           <Link style={{textDecoration: 'none',color: '#212529',}} to="/Blog-API/list/all" ><Nav.Link href="#home">All</Nav.Link></Link>
+          <Link style={{textDecoration: 'none',color: '#212529',}} to="/Blog-API/list/Node.js" ><Nav.Link href="#home">Node</Nav.Link></Link>
+         <Link style={{textDecoration: 'none',color: '#212529',}} to="/Blog-API/list/React" ><Nav.Link href="#home">React</Nav.Link></Link>
+         <Link style={{textDecoration: 'none',color: '#212529',}} to="/Blog-API/list/MongoDB" ><Nav.Link href="#home">MongoDb</Nav.Link></Link>  
+        <Link style={{textDecoration: 'none',color: '#212529',}} to="/Blog-API/list/Bootstrap" ><Nav.Link href="#home">Bootstrap</Nav.Link></Link>
+       
       <a class="nav-link"  href='https://www.scribd.com/document/553485298/My-Resume' download='CV.pdf' target="_blank" rel="noopener noreferrer" > CV↓  </a>
       <a class="nav-link"  target="_blank" rel="noopener noreferrer"  href='https://www.scribd.com/document/565717418/My-Resume-1' > Curriculo↓ </a>
       <Link to="Blog-API/About-Me">  <Nav.Link href="#home">About Me</Nav.Link></Link>
