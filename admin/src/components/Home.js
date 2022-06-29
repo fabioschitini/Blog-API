@@ -20,7 +20,7 @@ useEffect(()=>{
       )
     },[])
   
-
+console.log(postDetails,"posttttttttttttttttttttttttttttttt")
 return (
     <div>
 <main class="container">
@@ -47,7 +47,7 @@ return (
       <strong class="d-inline-block mb-2 text-primary">World</strong>
       <h3 class="mb-0">{data.title}</h3>
       <div class="mb-1 text-muted">{data.date}</div>
-      <p class="card-text mb-auto">{data.content}</p>
+      <p class="card-text mb-auto">{data.summary}</p>
       <Link to={{pathname:`/post/${data._id}`}}> <a href="" class="stretched-link">Continue reading</a></Link>
     </div>
     <div class="col-auto d-none d-lg-block">
@@ -59,9 +59,7 @@ return (
 
       })
      
-      : <Spinner animation="border" role="status">
-      <span className="visually-hidden">Loading...</span>
-    </Spinner>}
+      : null}
 
 
 
@@ -72,37 +70,41 @@ return (
   <h3 class="pb-4 mb-4 fst-italic border-bottom">
         Welcome to my Blog/Portfolio
       </h3>
-  <article class="blog-post">
-        <h2 class="blog-post-title mb-1">{postDetails.title}</h2>
-        <p class="blog-post-meta">{postDetails.date} by <a href="#">Fabio</a></p>
+      {postDetails?
+      <article class="blog-post">
+      <h2 class="blog-post-title mb-1">{postDetails.title}</h2>
+      <p class="blog-post-meta">{postDetails.date} by <a href="#">Fabio</a></p>
 
-        <p>{postDetails.summary}</p>
-        <hr/>
+      <p>{postDetails.summary}</p>
+      <hr/>
 
-        
-        <h2>Feature</h2>       
-        <p>{postDetails.feature}</p>
-        <hr/>
-        <h3>Built With</h3>
-        <p>This is some additional paragraph placeholder content. It's a slightly shorter version of the other highly repetitive body text used throughout. This is an example unordered list:</p>
-        <ul>
-        {postDetails.tech?
-        
-        postDetails.tech.map(tech=>{
-        return (
-          <li>{tech}</li>
-        )
-       }):null}
-        </ul>
-        <hr/>
-  
-        <h2>Outcome</h2>
-        <p>{postDetails.outcome}</p>
-        <hr/>
-        <h3>What I learned</h3>
-        <p> {postDetails.learned}</p>
-        <hr/>
-      </article>
+      
+      <h2>Feature</h2>       
+      <p>{postDetails.feature}</p>
+      <hr/>
+      <h3>Built With</h3>
+      <p>This is some additional paragraph placeholder content. It's a slightly shorter version of the other highly repetitive body text used throughout. This is an example unordered list:</p>
+      <ul>
+      {postDetails.tech?
+      
+      postDetails.tech.map(tech=>{
+      return (
+        <li>{tech}</li>
+      )
+     }):null}
+      </ul>
+      <hr/>
+
+      <h2>Outcome</h2>
+      <p>{postDetails.outcome}</p>
+      <hr/>
+      <h3>What I learned</h3>
+      <p> {postDetails.learned}</p>
+      <hr/>
+    </article> 
+      
+      :null}
+ 
     
      
   

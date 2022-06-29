@@ -73,7 +73,7 @@ jwt.verify(token,'secreteKey',(err,user)=>{
     console.log('loggign out i think')
   }); 
 
-  router.get("/post",postController.post_create_get);
+  router.get("/post",postController.post_create_get); 
   router.post("/post",authenticateToken,postController.post_create_post);
   router.get("/comments",commentsController.comments_create_get);
   router.post("/comments",commentsController.comments_create_post);

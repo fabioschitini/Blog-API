@@ -96,9 +96,9 @@ exports.post_update_post=[
 
 exports.post_delete_post=(req,res,next)=>{
   
-    if(!req.user){
-        return res.send("Need to be logged in to submit post")
-     }
+   // if(!req.user){
+   //     return res.send("Need to be logged in to submit post")
+    // }
 
     Post.findByIdAndDelete(req.body.postId,err=>{
          if(err){return next(err)}

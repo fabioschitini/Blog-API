@@ -28,12 +28,13 @@ const Post = (props) => {
 
 
     function deletePost(e){
-        if(!props.user){
-            return
-        }
+      //  if(!props.user){
+       //     return
+       // }
         console.log("Deleting Post")
         instance.post("/post/delete",{postId:e.target.id,comment}).then(result=>{
-            props.setBackendDataPost(result.data.post)
+          console.log(result.data,"resukt of deleteeeee")
+            props.setBackendDataPost(result.data)
             console.log("deleted with sucess")
             navigate("/")
         })
