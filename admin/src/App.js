@@ -53,12 +53,12 @@ function App() {
            <Nav user={userData} setUserData={setUserData}/> 
            <Routes>
            <Route exact path='/Blog-API/' element={<Home backendDataPost={backendDataPost} user={userData} />} />
-           <Route exact path='Blog-API/login' element={<Login setUserData={setUserData} />} />
-           <Route exact path='Blog-API/post/create' element={<PostCreate backendDataPost={backendDataPost} setBackendDataPost={setBackendDataPost}  user={userData} />} />
-           <Route exact path='Blog-API/post/:id' element={<Post backendDataPost={backendDataPost} setBackendDataPost={setBackendDataPost}  user={userData} />} />
-           <Route exact path='Blog-API/post/update/:id' element={<PostEdit backendDataPost={backendDataPost} setBackendDataPost={setBackendDataPost}  user={userData} />} />
-           <Route exact path='Blog-API/postList/:id' element={<PostList backendDataPost={backendDataPost} setBackendDataPost={setBackendDataPost}  user={userData} />} />
-           <Route exact path='Blog-API/About-Me' element={<AboutMe backendDataPost={backendDataPost} setBackendDataPost={setBackendDataPost}  user={userData} />} />
+           <Route exact path='/Blog-API/login' element={<Login setUserData={setUserData} />} />
+           <Route exact path='/Blog-API/post/create' element={<PostCreate backendDataPost={backendDataPost} setBackendDataPost={setBackendDataPost}  user={userData} />} />
+           <Route exact path='/Blog-API/post/:id' element={<Post backendDataPost={backendDataPost} setBackendDataPost={setBackendDataPost}  user={userData} />} />
+           <Route exact path='/Blog-API/post/update/:id' element={<PostEdit backendDataPost={backendDataPost} setBackendDataPost={setBackendDataPost}  user={userData} />} />
+           <Route exact path='/Blog-API/postList/:id' element={<PostList backendDataPost={backendDataPost} setBackendDataPost={setBackendDataPost}  user={userData} />} />
+           <Route exact path='/Blog-API/About-Me' element={<AboutMe backendDataPost={backendDataPost} setBackendDataPost={setBackendDataPost}  user={userData} />} />
 
            </Routes>
          </Router>
