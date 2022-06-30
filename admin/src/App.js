@@ -14,7 +14,7 @@ import AboutMe from './components/AboutMe'
 //import PostUpdate from './components/PostUpdate'
 import Axios from 'axios'
 const instance = Axios.create({
-  baseURL: 'https://blooming-peak-71078.herokuapp.com/',
+  baseURL: 'http://localhost:3001/',
   withCredentials:true
 
 });
@@ -22,25 +22,31 @@ const instance = Axios.create({
 function App() {
   const [backendDataPost,setBackendDataPost]=useState([{}])
   const [userData,setUserData]=useState(undefined)
+
 //baby do bab do birulaibe laibe'
 
 
   useEffect(()=>{
+
+    instance.get("/login").then((response)=>{
+      if(!response.data.user)  setUserData(undefined)
+      else   setUserData(response.data.user)
+     // console.log(response.data.user,'ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd')
+    })
+
     instance.get("/post").then((response)=>{
-     console.log('responseeeeee',response)
+    //console.log('yoooooooooooooooooooooooooooooooooooooooooooooooooooooooo',response.data.post)
      if(!response){
-      setUserData(undefined)
+      //setUserData(undefined)
       setBackendDataPost(undefined)
      }
-     else{ console.log('response data userrr mate',response.data.post)
-      setUserData(response.data.user)
+     else{ 
+    
     setBackendDataPost(response.data.post) }
 
   }
   )
-  instance.get("/post/details/yo").then(response=>{
-    console.log(response)
-  })
+  
     
    
 

@@ -8,7 +8,7 @@ const PostList = (props) => {
 
 
     const { id } = useParams()  
-    console.log(id,"iddddddddddddddddddddddddddddddddddddd")
+    //console.log(id,"iddddddddddddddddddddddddddddddddddddd")
 
       return (
         <div class="container">

@@ -80,7 +80,7 @@ jwt.verify(token,'secreteKey',(err,user)=>{
   router.post("/comments/delete",authenticateToken,commentsController.comments_delete_post);
   router.post("/post/delete",authenticateToken,postController.post_delete_post);
   router.get("/post/:id",postController.post_details_get);
-  router.get("/post/update/:id",authenticateToken,postController.post_update_get);  
+  router.get("/post/update/:id",postController.post_update_get);  
   router.post("/post/update/:id",authenticateToken,postController.post_update_post);
   router.get("/comments/:id",commentsController.comments_update_get);
   router.post("/comments/:id",commentsController.comments_update_post);

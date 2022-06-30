@@ -5,7 +5,7 @@ var Comments= require('../models/comments');
 
 
 exports.post_create_get=(req,res,next)=>{
-    console.log('req userrrrrrrrrrrrrrrr',req.user)
+    
     Post.find({}).then(post=>res.json({post,errors:[],user:req.user}))
 }
 

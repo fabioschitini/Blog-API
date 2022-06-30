@@ -11,7 +11,7 @@ import { Formik } from 'formik';
   //})
 
   const instance = Axios.create({
-    baseURL: 'https://blooming-peak-71078.herokuapp.com',
+    baseURL: 'http://localhost:3001/',
     withCredentials:true
   });
 
@@ -23,13 +23,13 @@ const Login = (props) => {
 
    
     return (
-      <div class="container col-xl-10 col-xxl-8 px-4 py-5"> 
-        <div class="row align-items-center g-lg-5 py-5">
-        <div class="col-lg-7 text-center text-lg-start">
-        <h1 class="display-4 fw-bold lh-1 mb-3">Admin log in </h1>
-        <p class="col-lg-10 fs-4">Only the admin can accese this part of the website, where he can delete,create,publish post and comments</p>
+      <div className="container col-xl-10 col-xxl-8 px-4 py-5"> 
+        <div className="row align-items-center g-lg-5 py-5">
+        <div className="col-lg-7 text-center text-lg-start">
+        <h1 className="display-4 fw-bold lh-1 mb-3">Admin log in </h1>
+        <p className="col-lg-10 fs-4">Only the admin can accese this part of the website, where he can delete,create,publish post and comments</p>
       </div>
-      <div class="col-md-10 mx-auto col-lg-5"> 
+      <div className="col-md-10 mx-auto col-lg-5"> 
     <Formik
       onSubmit={values=>{
         console.log("Submiting")
@@ -69,7 +69,7 @@ const Login = (props) => {
         isValidating,
         validate,
       }) => (
-        <Form class="p-4 p-md-7 border rounded-3 bg-light" noValidate onSubmit={handleSubmit}>
+        <Form className="p-4 p-md-7 border rounded-3 bg-light" noValidate onSubmit={handleSubmit}>
      
           
             <Form.Group as={Col} md="10" controlId="validationFormik01">
@@ -98,7 +98,7 @@ const Login = (props) => {
   <Form.Control.Feedback type="invalid">{errorPasswordMessage}</Form.Control.Feedback>         
                  </Form.Group>
             
-          <Button class="w-100 btn btn-lg btn-primary" style={{marginTop:"10vh"}} type="submit">Log In</Button>
+          <Button className="w-100 btn btn-lg btn-primary" style={{marginTop:"10vh"}} type="submit">Log In</Button>
         </Form>
       )}
     </Formik>

@@ -5,14 +5,14 @@ import { Navbar,Nav,Container,NavDropdown,Col,Row} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const instance = Axios.create({
-    baseURL: 'https://blooming-peak-71078.herokuapp.com',
+    baseURL: 'http://localhost:3001/',
     withCredentials:true
   
   });
 
 const Navs = (props) => {
     const navigate=useNavigate()
-console.log("uSerrrr",props.user)
+//console.log("uSerrrr",props.user)
 
     function logOut(){
         console.log("yeppepee")
@@ -20,7 +20,7 @@ console.log("uSerrrr",props.user)
         .then(function (response) {
           console.log('response.data.userrrrrrrrrrrrrrrrrrr')
           props.setUserData(response.data.user)
-          navigate('/')
+          navigate('/Blog-API')
         })
 
     }
@@ -33,7 +33,7 @@ console.log("uSerrrr",props.user)
          <Navbar.Brand href="#home">Portfolio Blog</Navbar.Brand>
          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
          <Navbar.Collapse id="responsive-navbar-nav">
-           <Nav className="me-auto">
+           <Nav classNameName="me-auto">
            <Link to="/Blog-API/">  <Nav.Link href="#home">Home Page</Nav.Link></Link>
            {props.user?
            <Link to="/Blog-API">  <Nav.Link onClick={logOut} href="#home">Log Out</Nav.Link></Link>
@@ -55,8 +55,8 @@ console.log("uSerrrr",props.user)
          <Link style={{textDecoration: 'none',color: '#212529',}} to="/Blog-API/list/MongoDB" ><Nav.Link href="#home">MongoDb</Nav.Link></Link>  
         <Link style={{textDecoration: 'none',color: '#212529',}} to="/Blog-API/list/Bootstrap" ><Nav.Link href="#home">Bootstrap</Nav.Link></Link>
        
-      <a class="nav-link"  href='https://www.scribd.com/document/553485298/My-Resume' download='CV.pdf' target="_blank" rel="noopener noreferrer" > CV↓  </a>
-      <a class="nav-link"  target="_blank" rel="noopener noreferrer"  href='https://www.scribd.com/document/565717418/My-Resume-1' > Curriculo↓ </a>
+      <a className="nav-link"  href='https://www.scribd.com/document/553485298/My-Resume' download='CV.pdf' target="_blank" rel="noopener noreferrer" > CV↓  </a>
+      <a className="nav-link"  target="_blank" rel="noopener noreferrer"  href='https://www.scribd.com/document/565717418/My-Resume-1' > Curriculo↓ </a>
       <Link to="Blog-API/About-Me">  <Nav.Link href="#home">About Me</Nav.Link></Link>
 
 
