@@ -37,8 +37,12 @@ function App() {
     setBackendDataPost(response.data.post) }
 
   }
+  )
+  instance.get("/post/details/yo").then(response=>{
+    console.log(response)
+  })
     
-    )
+   
 
   },[])
 
