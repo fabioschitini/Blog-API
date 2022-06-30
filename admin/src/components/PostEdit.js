@@ -8,7 +8,7 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 
 const instance = Axios.create({
-    baseURL: 'http://localhost:3001/',
+    baseURL: 'https://blooming-peak-71078.herokuapp.com/',
     withCredentials:true
   });
 

@@ -5,7 +5,7 @@ import { Navbar,Nav,Container,NavDropdown,Col,Row} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const instance = Axios.create({
-    baseURL: 'http://localhost:3001/',
+    baseURL: 'https://blooming-peak-71078.herokuapp.com/',
     withCredentials:true
   
   });

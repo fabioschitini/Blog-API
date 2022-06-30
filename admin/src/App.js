@@ -14,7 +14,7 @@ import AboutMe from './components/AboutMe'
 //import PostUpdate from './components/PostUpdate'
 import Axios from 'axios'
 const instance = Axios.create({
-  baseURL: 'http://localhost:3001/',
+  baseURL: 'https://blooming-peak-71078.herokuapp.com/',
   withCredentials:true
 
 });
