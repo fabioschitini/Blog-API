@@ -8,7 +8,7 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 
 const instance = Axios.create({
-    baseURL: 'http://localhost:3001/',
+    baseURL: 'https://blooming-peak-71078.herokuapp.com',
     withCredentials:true
   });
 
@@ -58,7 +58,7 @@ return (
                 instance.get("/post").then(response=>{ console.log(response.data.post[0])
                     props.setBackendDataPost(response.data.post)
                     console.log("Created with sucess")
-                    navigate("/")
+                    navigate("/Blog-API")
                 })
             })
         

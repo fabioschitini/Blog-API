@@ -5,7 +5,7 @@ import Axios from 'axios'
 import { useState,useEffect } from 'react'
 
 const instance = Axios.create({
-  baseURL: 'http://localhost:3001/',
+  baseURL: 'https://blooming-peak-71078.herokuapp.com',
   withCredentials:true
 });
   
@@ -20,7 +20,7 @@ useEffect(()=>{
       )
     },[])
   
-
+console.log(postDetails,"posttttttttttttttttttttttttttttttt")
 return (
     <div>
 <main class="container">
@@ -28,7 +28,7 @@ return (
 <div class="col-md-6 px-0">
   <h1 class="display-4 fst-italic">A litle Resume About Me</h1>
   <p class="lead my-3">Just a Post Containing information about me,myself and I. Contains a lilte summary about my carrer, a lilte portfolio of my own</p>
-  <p class="lead mb-0"><a href="/About-Me" class="text-white fw-bold">Continue reading...</a></p>
+  <p class="lead mb-0"><a href="/Blog-API/About-Me" class="text-white fw-bold">Continue reading...</a></p>
 </div>
 </div>
 
@@ -47,8 +47,8 @@ return (
       <strong class="d-inline-block mb-2 text-primary">World</strong>
       <h3 class="mb-0">{data.title}</h3>
       <div class="mb-1 text-muted">{data.date}</div>
-      <p class="card-text mb-auto">{data.content}</p>
-      <Link to={{pathname:`/post/${data._id}`}}> <a href="" class="stretched-link">Continue reading</a></Link>
+      <p class="card-text mb-auto">{data.summary}</p>
+      <Link to={{pathname:`/Blog-API/post/${data._id}`}}> <a href="" class="stretched-link">Continue reading</a></Link>
     </div>
     <div class="col-auto d-none d-lg-block">
 
@@ -59,9 +59,7 @@ return (
 
       })
      
-      : <Spinner animation="border" role="status">
-      <span className="visually-hidden">Loading...</span>
-    </Spinner>}
+      : null}
 
 
 
@@ -72,37 +70,41 @@ return (
   <h3 class="pb-4 mb-4 fst-italic border-bottom">
         Welcome to my Blog/Portfolio
       </h3>
-  <article class="blog-post">
-        <h2 class="blog-post-title mb-1">{postDetails.title}</h2>
-        <p class="blog-post-meta">{postDetails.date} by <a href="#">Fabio</a></p>
+      {postDetails?
+      <article class="blog-post">
+      <h2 class="blog-post-title mb-1">{postDetails.title}</h2>
+      <p class="blog-post-meta">{postDetails.date} by <Link to="/Blog-API/About-Me">Fabio</Link></p>
 
-        <p>{postDetails.summary}</p>
-        <hr/>
+      <p>{postDetails.summary}</p>
+      <hr/>
 
-        
-        <h2>Feature</h2>       
-        <p>{postDetails.feature}</p>
-        <hr/>
-        <h3>Built With</h3>
-        <p>This is some additional paragraph placeholder content. It's a slightly shorter version of the other highly repetitive body text used throughout. This is an example unordered list:</p>
-        <ul>
-        {postDetails.tech?
-        
-        postDetails.tech.map(tech=>{
-        return (
-          <li>{tech}</li>
-        )
-       }):null}
-        </ul>
-        <hr/>
-  
-        <h2>Outcome</h2>
-        <p>{postDetails.outcome}</p>
-        <hr/>
-        <h3>What I learned</h3>
-        <p> {postDetails.learned}</p>
-        <hr/>
-      </article>
+      
+      <h2>Feature</h2>       
+      <p>{postDetails.feature}</p>
+      <hr/>
+      <h3>Built With</h3>
+      <p>This is some additional paragraph placeholder content. It's a slightly shorter version of the other highly repetitive body text used throughout. This is an example unordered list:</p>
+      <ul>
+      {postDetails.tech?
+      
+      postDetails.tech.map(tech=>{
+      return (
+        <li>{tech}</li>
+      )
+     }):null}
+      </ul>
+      <hr/>
+
+      <h2>Outcome</h2>
+      <p>{postDetails.outcome}</p>
+      <hr/>
+      <h3>What I learned</h3>
+      <p> {postDetails.learned}</p>
+      <hr/>
+    </article> 
+      
+      :null}
+ 
     
      
   
@@ -119,11 +121,13 @@ return (
         <div class="p-4">
           <h4 class="fst-italic">Divided by Tech</h4>
           <ol class="list-unstyled mb-0">
-          <li><a href="/postList/all">All</a></li>
-            <li><a href="/postList/Node.js">Node</a></li>
-            <li><a href="/postList/React">React</a></li>
-            <li><a href="/postList/MongoDb">MongoDb</a></li>
-            <li><a href="/postList/Bootstrap">Bootstrap</a></li>
+          <li>
+        <li> <Link  to="/Blog-API/list/all" >All</Link></li>
+        <li>  <Link  to="/Blog-API/list/Node.js" >Node</Link></li>
+        <li>  <Link  to="/Blog-API/list/React" >React</Link></li>
+        <li>  <Link  to="/Blog-API/list/MongoDB" >MongoDb</Link>  </li>
+        <li>   <Link  to="/Blog-API/list/Bootstrap" >Bootstrap</Link></li>
+            </li>
           </ol>
         </div>
 

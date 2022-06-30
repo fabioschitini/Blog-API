@@ -11,7 +11,7 @@ import { Formik } from 'formik';
   //})
 
   const instance = Axios.create({
-    baseURL: 'http://localhost:3001/',
+    baseURL: 'https://blooming-peak-71078.herokuapp.com',
     withCredentials:true
   });
 
@@ -49,7 +49,7 @@ const Login = (props) => {
               setErrorPasswordMessage(false)
 
               props.setUserData(result.data.user)
-              navigate("/")
+              navigate("/Blog-API")
             }
         })
       }}

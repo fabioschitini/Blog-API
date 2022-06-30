@@ -23,8 +23,8 @@ const PostList = (props) => {
                              <strong class="d-inline-block mb-2 text-primary">World</strong>
                                 <h3 class="mb-0">{data.title}</h3>
                             <div class="mb-1 text-muted">{data.date}</div>
-                             <p class="card-text mb-auto">{data.content}</p>
-                                <Link to={{pathname:`/post/${data._id}`}}> <a href="" class="stretched-link">Continue reading</a></Link>
+                             <p class="card-text mb-auto">{data.summary}</p>
+                                <Link to={{pathname:`/Blog-API/post/${data._id}`}}> <a href="" class="stretched-link">Continue reading</a></Link>
                             </div>
                     
           </div>
@@ -40,8 +40,8 @@ const PostList = (props) => {
                         <strong class="d-inline-block mb-2 text-primary">World</strong>
                         <h3 class="mb-0">{data.title}</h3>
                         <div class="mb-1 text-muted">{data.date}</div>
-                        <p class="card-text mb-auto">{data.content}</p>
-                        <Link to={{pathname:`/post/${data._id}`}}> <a href="" class="stretched-link">Continue reading</a></Link>
+                        <p class="card-text mb-auto">{data.summary}</p>
+                        <Link to={{pathname:`/Blog-API/post/${data._id}`}}> <a href="" class="stretched-link">Continue reading</a></Link>
                       </div>
                       <div class="col-auto d-none d-lg-block">
                   

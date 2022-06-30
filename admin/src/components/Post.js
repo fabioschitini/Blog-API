@@ -28,14 +28,15 @@ const Post = (props) => {
 
 
     function deletePost(e){
-        if(!props.user){
-            return
-        }
+      //  if(!props.user){
+       //     return
+       // }
         console.log("Deleting Post")
         instance.post("/post/delete",{postId:e.target.id,comment}).then(result=>{
-            props.setBackendDataPost(result.data.post)
+          console.log(result.data,"resukt of deleteeeee")
+            props.setBackendDataPost(result.data)
             console.log("deleted with sucess")
-            navigate("/")
+            navigate("/Blog-API/")
         })
     }
 
@@ -69,7 +70,7 @@ const Post = (props) => {
                 console.log("deleted with sucess")
                 instance.get(`/comments`).then(data=>{          
                     setComment(data.data.comments.filter(comment=>comment.post[0]===id))})
-                    console.log("Sucess")
+                    console.log("Sucess delete")
 
             })
         }
@@ -103,7 +104,7 @@ useEffect(()=>{
             <div class="row g-5" style={{margin:"0"}}>
             <article class="blog-post">
         <h2 class="blog-post-title mb-1">{postDetails.title}</h2>
-        <p class="blog-post-meta">{postDetails.date} by <a href="#">Fabio</a></p>
+        <p class="blog-post-meta">{postDetails.date} by <Link to="/Blog-API/About-Me">Fabio</Link></p>
 
         <p>{postDetails.summary}</p>
         <hr/>
@@ -131,11 +132,11 @@ useEffect(()=>{
         <h3>What I learned</h3>
         <p> {postDetails.learned}</p>
         <hr/>
-{props.user?<Button style={{marginRight:"20px"}}  onClick={deletePost}>Delete</Button>   :null}
+{props.user?<Button id={postDetails._id} style={{marginRight:"20px"}}  onClick={deletePost}>Delete</Button>   :null}
 {props.user?   <Link className="btn btn-primary" to={{
-                pathname:`/post/update/${id}`
+                pathname:`/Blog-API/post/update/${id}`
             }}>Edit</Link>  :null}
-      </article>
+      </article> 
 
         <div> 
  

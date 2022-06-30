@@ -14,7 +14,7 @@ import AboutMe from './components/AboutMe'
 //import PostUpdate from './components/PostUpdate'
 import Axios from 'axios'
 const instance = Axios.create({
-  baseURL: 'http://localhost:3001/',
+  baseURL: 'https://blooming-peak-71078.herokuapp.com/',
   withCredentials:true
 
 });
@@ -32,7 +32,7 @@ function App() {
       setUserData(undefined)
       setBackendDataPost(undefined)
      }
-     else{ console.log('response data userrr mate',response.data.user)
+     else{ console.log('response data userrr mate',response.data.post)
       setUserData(response.data.user)
     setBackendDataPost(response.data.post) }
 
@@ -56,13 +56,13 @@ function App() {
       <Router>
            <Nav user={userData} setUserData={setUserData}/> 
            <Routes>
-           <Route exact path='/' element={<Home backendDataPost={backendDataPost} user={userData} />} />
-           <Route exact path='/login' element={<Login setUserData={setUserData} />} />
-           <Route exact path='/post/create' element={<PostCreate backendDataPost={backendDataPost} setBackendDataPost={setBackendDataPost}  user={userData} />} />
-           <Route exact path='/post/:id' element={<Post backendDataPost={backendDataPost} setBackendDataPost={setBackendDataPost}  user={userData} />} />
-           <Route exact path='/post/update/:id' element={<PostEdit backendDataPost={backendDataPost} setBackendDataPost={setBackendDataPost}  user={userData} />} />
-           <Route exact path='/postList/:id' element={<PostList backendDataPost={backendDataPost} setBackendDataPost={setBackendDataPost}  user={userData} />} />
-           <Route exact path='/About-Me' element={<AboutMe backendDataPost={backendDataPost} setBackendDataPost={setBackendDataPost}  user={userData} />} />
+           <Route exact path='/Blog-API/' element={<Home backendDataPost={backendDataPost} user={userData} />} />
+           <Route  path='/Blog-API/list/:id' element={<PostList backendDataPost={backendDataPost} setBackendDataPost={setBackendDataPost}  user={userData} />} />
+           <Route exact path='/Blog-API/login' element={<Login setUserData={setUserData} />} />
+           <Route exact path='/Blog-API/post/create' element={<PostCreate backendDataPost={backendDataPost} setBackendDataPost={setBackendDataPost}  user={userData} />} />
+           <Route exact path='/Blog-API/post/:id' element={<Post backendDataPost={backendDataPost} setBackendDataPost={setBackendDataPost}  user={userData} />} />
+           <Route exact path='/Blog-API/post/update/:id' element={<PostEdit backendDataPost={backendDataPost} setBackendDataPost={setBackendDataPost}  user={userData} />} />
+           <Route exact path='/Blog-API/About-Me' element={<AboutMe backendDataPost={backendDataPost} setBackendDataPost={setBackendDataPost}  user={userData} />} />
 
            </Routes>
          </Router>
