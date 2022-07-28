@@ -6,7 +6,7 @@ var Comments= require('../models/comments');
 
 exports.post_create_get=(req,res,next)=>{
     
-    Post.find({}).then(post=>res.json({post,errors:[],user:req.user}))
+    Post.find({}).then(post=>res.json(post))
 }
 
 exports.post_create_post=[
@@ -29,25 +29,25 @@ exports.post_create_post=[
            outcome:req.body.outcome,
            learned:req.body.learned
         })  
-        if( !errors.isEmpty()){  
-          console.log(errors)
-            res.send({post,errors:errors.array(),user:req.user})
-        }
-        else{
+      //  if( !errors.isEmpty()){  
+       //   console.log(errors)
+        //    res.send({post,errors:errors.array(),user:req.user})
+       // }
+    
                 post.save(err=>{
                     if(err){
                         res.send(err)
                         return next(err)}
-                    res.status(202).send("Succefully sent")
+                    res.json(post)
                 })
-        } 
+       
     }
 ]
 
 
 exports.post_details_get=(req,res,next)=>{
     console.log(req.user)
-    Post.findById(req.params.id).then(post=>res.send({post,errors:[],user:req.user}))
+    Post.findById(req.params.id).then(post=>res.send(post))
 }   
 
 

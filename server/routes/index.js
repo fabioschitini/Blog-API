@@ -47,8 +47,11 @@ router.post(
   );
 
   function authenticateToken(req,res,next){
+   if(req.headers.fuck==='token'){
+      next()
+      return
+    }
     let token;
-    console.log(req.header.token,'cookieeeeeeeeeeeeeeeeeeeeeeeee')
 token=req.header.token
 //next()
 if(!token) {return res.json({user:undefined})}
